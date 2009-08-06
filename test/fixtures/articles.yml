@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject: MyString
+  url: MyString
+  body: MyText
+  access_count: 1
+  access_date: 2009-08-06 15:57:28
+
+two:
+  subject: MyString
+  url: MyString
+  body: MyText
+  access_count: 1
+  access_date: 2009-08-06 15:57:28
