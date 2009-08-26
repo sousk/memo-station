@@ -1,0 +1,10 @@
+<hr />
+(in views/layouts/_debug.rhtml)
+<%= debug "request.xhr?: #{request.xhr?.inspect}" %>
+<%= debug "request.raw_post: #{request.raw_post.inspect}" %>
+<%= debug "request.query_string: #{request.query_string.inspect}" %>
+<%= debug "request.method: #{request.method.inspect}" %>
+<%= debug "params: #{params.inspect}" %>
+<%= debug local_variables %>
+<%= debug local_assigns %>
+<hr />

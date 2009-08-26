@@ -1,0 +1,17 @@
+<% if @article && !@article.new_record? && !@article.tag_names.empty? -%>
+  <% articles = Article.find_tagged_with(:any => @article.tag_names, :conditions => ["articles.id != ?", @article.id], :order => "created_at DESC", :limit => 10) -%>
+  <% unless articles.empty? -%>
+  <div class="related_articles">
+  <dl>
+  <dt>関連メモ</dt>
+  <dd>
+    <ul>
+     <% articles.each do |article| -%>
+      <li><%= link_to h(article.subject), :controller => "articles", :action => "show", :id => article %></li>
+     <% end -%>
+    </ul>
+  </dd>
+  </dl>
+  </div>
+  <% end -%>
+<% end -%>

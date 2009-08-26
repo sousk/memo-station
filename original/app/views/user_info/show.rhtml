@@ -1,0 +1,17 @@
+<% @page_title ||= "ユーザー情報の表示" %>
+<% @topic_path_last ||= @page_title %>
+
+<h2><%= @page_title %></h2>
+
+<%= my_form_elements_start %>
+<%= my_column_show :user_info, "name_kanji1" %>
+<%= my_column_show :user_info, "name_kanji2" %>
+<%= my_column_show :user_info, "pc_email" %>
+<%= my_column_show :user_info, "mobile_email" %>
+<%= my_form_elements_end %>
+
+<div class="submit">
+<%= link_to "編集", :controller => "user_info", :action => "edit" %>
+</div>
+
+<%= end_form_tag %>

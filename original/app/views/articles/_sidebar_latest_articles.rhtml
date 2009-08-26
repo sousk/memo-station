@@ -1,0 +1,11 @@
+<div class="sidebar_latest_articles">
+<div class="roundedTitle"><span>最近登録されたメモ</span></div>
+<div class="roundedContent">
+<ul>
+ <% @articles.each do |article| -%>
+ <li><%= link_to h(truncate(article.subject, 21)), :controller => "articles", :action => "show", :id => article %></li>
+ <% end -%>
+</ul>
+</div>
+</div>
+

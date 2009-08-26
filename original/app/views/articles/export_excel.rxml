@@ -1,0 +1,88 @@
+@header_row_size = 1
+
+xml.instruct!
+xml.instruct! "mso-application", :progid => "Excel.Sheet"
+xml.Workbook({
+               "xmlns" => "urn:schemas-microsoft-com:office:spreadsheet",
+               "xmlns:o" => "urn:schemas-microsoft-com:office:office",
+               "xmlns:x" => "urn:schemas-microsoft-com:office:excel",
+               "xmlns:ss" => "urn:schemas-microsoft-com:office:spreadsheet",
+               "xmlns:html" => "http://www.w3.org/TR/REC-html40",
+             }) {
+  xml.Styles {
+    xml.Style("ss:ID" => "Default", "ss:Name" => "Normal") {
+      # Top: 上詰め
+      xml.Alignment "ss:Vertical" => "Top", "ss:WrapText" => "1"
+      xml.Borders
+      xml.Font({"ss:FontName" => "ＭＳ Ｐゴシック", "x:CharSet" => "128", "x:Family" => "Modern", "ss:Size" => "10"})
+      xml.Interior
+      xml.NumberFormat
+      xml.Protection
+    }
+    xml.Style("ss:ID" => "base_style") {
+      xml.Borders{
+        xml.Border "ss:Position" => "Bottom", "ss:LineStyle" => "Continuous", "ss:Weight" => 1
+        xml.Border "ss:Position" => "Left",   "ss:LineStyle" => "Continuous", "ss:Weight" => 1
+        xml.Border "ss:Position" => "Right",  "ss:LineStyle" => "Continuous", "ss:Weight" => 1
+        xml.Border "ss:Position" => "Top",    "ss:LineStyle" => "Continuous", "ss:Weight" => 1
+      }
+      xml.NumberFormat
+      xml.Protection
+      xml.Font({"ss:Size" => "10"})
+    }
+    xml.Style("ss:ID" => "header_style", "ss:Parent" => "base_style") {
+      xml.Interior("ss:Color" => "#C0C0C0", "ss:Pattern" => "Solid")
+    }
+    xml.Style("ss:ID" => "string_style", "ss:Parent" => "base_style") {
+    }
+    xml.Style("ss:ID" => "date_style", "ss:Parent" => "base_style") {
+      xml.NumberFormat("ss:Format" => "Short Date")
+    }
+    xml.Style("ss:ID" => "url_style", "ss:Parent" => "base_style") {
+      xml.Font("ss:Color" => "#0000FF", "ss:Underline" => "Single")
+    }
+  }
+  xml.Worksheet("ss:Name" => APPLICATION_TITLE) {
+    xml.Table(
+              {
+                "ss:ExpandedColumnCount" => 8, # 使用している横幅
+                "ss:ExpandedRowCount"    => @header_row_size + @articles.size,
+                "x:FullColumns"          => 1,
+                "x:FullRows"             => 1,
+                "ss:DefaultColumnWidth"  => 54,
+                "ss:DefaultRowHeight"    => 16,
+              }
+              ) {
+      xml.Column "ss:Width" => 25,  "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 300, "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 60, "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 60, "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 60, "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 60, "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 60, "ss:AutoFitWidth" => 1
+      xml.Column "ss:Width" => 100, "ss:AutoFitWidth" => 1
+      xml.Row {
+        %w(id subject body my_tags url loginname access_count created_at).each{|column_name|
+          xml.Cell("ss:StyleID" => "header_style") {xml.Data Article.human_attribute_name(column_name), "ss:Type" => "String"}
+        }
+      }
+      @articles.each{|article|
+        xml.Row {
+          xml.Cell("ss:StyleID" => "string_style") {xml.Data article.id,         "ss:Type" => "Number"}
+          xml.Cell("ss:StyleID" => "string_style") {xml.Data article.subject,    "ss:Type" => "String"}
+          xml.Cell("ss:StyleID" => "string_style") {xml.Data article.body.gsub(/\n/, "__ARTICLE_BODY_CR_IN_EXCEL_CELL__"), "ss:Type" => "String"}
+          xml.Cell("ss:StyleID" => "string_style") {xml.Data article.my_tags,    "ss:Type" => "String"}
+          if article.url.blank?
+            attribute = {"ss:StyleID" => "string_style"}
+          else
+            attribute = {"ss:StyleID" => "url_style", "ss:HRef" => article.url}
+          end
+          xml.Cell(attribute) {xml.Data article.url, "ss:Type" => "String"}
+          xml.Cell("ss:StyleID" => "string_style") {xml.Data article.user.loginname, "ss:Type" => "String"}
+          xml.Cell("ss:StyleID" => "string_style") {xml.Data article.access_count,  "ss:Type" => "Number"}
+          xml.Cell("ss:StyleID" => "date_style")   {xml.Data article.created_at, "ss:Type" => "String"}
+        }
+      }
+    }
+  }
+}

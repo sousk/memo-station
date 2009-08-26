@@ -1,0 +1,63 @@
+<% @page_title ||= "レポート" %>
+<% @topic_path_last ||= @page_title %>
+
+<%= javascript_tag("
+function report_chart_switch(name) {
+  if (name == 'all') {
+    report_chart_show_all();
+    return;
+  }
+  $$('.report_graph img').each(function(value, index){
+    value.hide();
+  });
+  $(name).show();
+}
+
+function report_chart_show_all() {
+  $$('.report_graph img').each(function(value, index){
+    value.show();
+  });
+}
+
+Event.observe(window, 'load', function() {
+  report_chart_show_all();
+  // report_chart_switch('daily');
+}, false);
+") %>
+
+<h2><%= @page_title %></h2>
+
+<p>
+<ul class="report_chart_select">
+ <li><%= link_to_function("Daily", "report_chart_switch('daily')") %></li>
+ <li><%= link_to_function("Weekly", "report_chart_switch('weekly')") %></li>
+ <li><%= link_to_function("Monthly", "report_chart_switch('monthly')") %></li>
+ <li><%= link_to_function("All", "report_chart_show_all()") %></li>
+</ul>
+</p>
+
+<p class="report_graph">
+<%= tag("img", :src => url_for(:controller => "reports", :action => "show", :type => "daily"), :id => "daily", :style => "display: none") %>
+<%= tag("img", :src => url_for(:controller => "reports", :action => "show", :type => "weekly"), :id => "weekly", :style => "display: none") %>
+<%= tag("img", :src => url_for(:controller => "reports", :action => "show", :type => "monthly"), :id => "monthly", :style => "display: none") %>
+</p>
+
+
+
+
+<% if false %>
+<p>
+一日毎のメモ数の推移です。
+</p>
+<%= sparkline_tag Article.distribution, :height => 200, :step => 15, :line_color => Palette[1] %>
+<%= sparkline_tag [10,20,30], :type => 'pie' %>
+<%= Sparklines.plot([1,25,33,46,89,90,85,77,42], :type => 'discrete', :height => 20) %>
+<%= sparkline_tag [1,2,3,4,5,6] %> <!-- Gives you a smooth graph -->
+<%= sparkline_tag [1,2,3,4,5,6], :type => 'discrete', :height => 10, :upper => 80, :above_color => 'green', :below_color => 'blue' %>
+<%= sparkline_tag [1,2,3,4,5,6], :type => 'discrete', :height => 100, :upper => 80, :above_color => 'green', :below_color => 'blue' %>
+<%= debug @articles %>
+<%= start_date %>
+<%= end_date %>
+<%= debug ary %>
+<% end %>
+

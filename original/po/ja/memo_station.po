@@ -1,0 +1,157 @@
+# Japanese translations for PACKAGE package
+# PACKAGE パッケージに対する英訳.
+# Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Akira Ikeda <ikeda@dream.big.or.jp>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2006-09-02 07:53+0900\n"
+"PO-Revision-Date: 2006-09-02 07:59+0900\n"
+"Last-Translator: Akira Ikeda <ikeda@dream.big.or.jp>\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# app/models/tag.rb:-
+msgid "tag"
+msgstr ""
+
+# app/models/tag.rb:-
+msgid "Tag|お名前"
+msgstr ""
+
+# app/models/user.rb:-
+msgid "user"
+msgstr ""
+
+# app/models/user.rb:-
+msgid "User|ログイン名"
+msgstr ""
+
+# app/models/user.rb:-
+msgid "User|パスワード"
+msgstr ""
+
+# app/models/user.rb:-
+msgid "User|Deleted"
+msgstr ""
+
+# app/models/user.rb:-
+msgid "User|作成日時"
+msgstr ""
+
+# app/models/user.rb:-
+msgid "User|更新日時"
+msgstr ""
+
+# app/models/article_view_log.rb:-
+msgid "article view log"
+msgstr ""
+
+# app/models/article_view_log.rb:-
+msgid "ArticleViewLog|ArticleId"
+msgstr ""
+
+# app/models/article_view_log.rb:-
+msgid "ArticleViewLog|UserId"
+msgstr ""
+
+# app/models/article_view_log.rb:-
+msgid "ArticleViewLog|作成日時"
+msgstr ""
+
+# app/models/article_view_log.rb:-
+msgid "ArticleViewLog|更新日時"
+msgstr ""
+
+# app/models/mailmessage.rb:-
+msgid "mailmessage"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "user info"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|UserId"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|お名前(姓)"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|お名前(名)"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|PCメールアドレス"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|携帯メールアドレス"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|CreatedOn"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|UpdatedOn"
+msgstr ""
+
+# app/models/user_info.rb:-
+msgid "UserInfo|Karma"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "article"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|題名"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|URL"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|内容"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|アクセス数"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|AccessDate"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|作成日時"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|更新日時"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|UserId"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|ModifiedAt"
+msgstr ""
+
+# app/models/article.rb:-
+msgid "Article|URLAccessAt"
+msgstr ""
+
+#: app/views/layouts/application.rhtml:39
+msgid "test"
+msgstr "aa"

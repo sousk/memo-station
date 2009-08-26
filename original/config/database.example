@@ -1,0 +1,20 @@
+development:
+  adapter: mysql
+  database: memo_station_development
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock
+  
+production:
+  adapter: mysql
+  database: memo_station_production
+  username: root
+  password: 
+  socket: /var/lib/mysql/mysql.sock
+
+test:
+  adapter: mysql
+  database: memo_station_test
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock

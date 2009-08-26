@@ -1,0 +1,22 @@
+<div id="search">
+  <%= form_tag({:controller => "articles", :action => "search"}, {:method => "get"}) %>
+    <%= text_field_tag :query, params[:query], :autocomplete => "off" %>
+      <%= my_submit_tag "検索", :name => "submit_search", :disable_with => "検索" %>
+<% if session[:user] -%>
+      <%= observe_field :query,
+                        :frequency => 0.3,
+                        :url => {:controller => "articles", :action => "search_remote"},
+                        :with => "'query=' + encodeURIComponent(value)",
+                        :update => :search_results,
+                        :loading => "Element.show('search-indicator')",
+                        :complete => "Element.hide('search-indicator')"
+                        %>
+<% end -%>
+  <%= end_form_tag %>
+</div>
+
+<%= javascript_tag "
+Event.observe(window, 'load', function(){
+// $('query').focus();
+}, false);
+" %>

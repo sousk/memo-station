@@ -1,0 +1,28 @@
+<% @page_title ||= "エクスポート" %>
+<% @topic_path_last ||= @page_title %>
+
+<h2><%= @page_title %></h2>
+
+<p>どの種類でエクスポートしますか？</p>
+
+<div class="export_links">
+<p><%= link_to_with_icon "page_excel", "エクセル", {:controller => "articles", :action => "export", :type => "excel"} -%></p>
+<p><%= link_to_with_icon "page_white_acrobat", "PDF", {:controller => "articles", :action => "export", :type => "pdf"}-%></p>
+<p><%= link_to_with_icon "page_white_tux", "CSV", {:controller => "articles", :action => "export", :type => "csv"} -%></p>
+<p><%= link_to_with_icon "page_white_database", "CSV (MySQLで直接エクスポート)", {:controller => "articles", :action => "export", :type => "mysql_csv"} -%></p>
+<!-- <p><%= link_to_with_icon "page_word", "ワード", :controller => "articles", :action => "export", :type => "word" -%></p> -->
+</div>
+
+<p id="message"></p>
+
+<%= javascript_tag("
+$$('.export_links a').each(function(value, index){
+  value.onclick = function() {
+    $('message').innerHTML = 'しばらくお待ちください。';
+  }
+  // ダイアログが表示されたときにここを呼んで欲しいのだけど呼ばれない。
+  value.onunload = function() {
+    $('message').innerHTML = '';
+  }
+});
+") %>

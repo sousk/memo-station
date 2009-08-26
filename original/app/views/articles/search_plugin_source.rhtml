@@ -1,0 +1,22 @@
+# $Id: search_plugin_source.rhtml 597 2006-08-14 20:44:47Z ikeda $
+#
+# <%= APPLICATION_TITLE %> 検索プラグイン
+#
+
+<search
+  name = "<%= APPLICATION_TITLE %>"
+  description = "<%= APPLICATION_TITLE %>でタグ検索"
+  sourceTextEncoding = "1"
+  method = "GET"
+  queryEncoding="UTF-8"
+  queryCharset="UTF-8"
+  action = "<%= server_url_for :controller => 'articles', :action => 'search' %>"
+>
+
+<input name="query" user>
+
+<browser
+  update = "<%= search_plugin_path("src") %>"
+  updateIcon = "<%= search_plugin_path("png") %>"
+  updateCheckDays = "1"
+>

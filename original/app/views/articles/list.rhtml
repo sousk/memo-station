@@ -1,0 +1,57 @@
+<%
+if @articles.empty?
+  pagenation_info = "#{@article_pages.item_count}件"
+else
+  if false
+    pagenation_info = "(#{@article_pages.item_count}件中 #{@article_pages.current.first_item}〜#{@article_pages.current.last_item}件目)"
+  else
+    pagenation_info = "#{@article_pages.item_count}件"
+    if @article_pages.first != @article_pages.last
+      pagenation_info += " (#{@article_pages.current.to_i}/#{@article_pages.last.to_i}ページ)"
+    end
+  end
+end
+
+if controller.action_name == "search"
+  @page_title ||= "「#{@queries.join(" ")}」の検索結果 #{pagenation_info}".strip
+  @topic_path_last ||= h @page_title
+  pagination_params = {:query => @queries.join(" ")}
+elsif controller.action_name == "bookmark"
+  @page_title ||= "ブックマーク #{pagenation_info}".strip
+  @topic_path_last ||= h @page_title
+  pagination_params = {}
+elsif controller.action_name == "recent_viewed"
+  @page_title ||= "最近見たメモ #{pagenation_info}".strip
+  @topic_path_last ||= h @page_title
+  pagination_params = {}
+elsif controller.action_name == "most_viewed"
+  @page_title = "#{@page_title}よく見たメモ #{pagenation_info}".strip
+  @topic_path_last ||= h @page_title
+  pagination_params = {}
+else
+  @page_title ||= "一覧 #{pagenation_info}".strip
+  @topic_path_last ||= h @page_title
+  pagination_params = {}
+end
+%>
+
+<div class="submenu">
+よく見たメモ
+<%= link_to "今日", :controller => "articles", :action => "most_viewed", :period => "today" %>
+<%= link_to "週", :controller => "articles", :action => "most_viewed", :period => "week" %>
+<%= link_to "月", :controller => "articles", :action => "most_viewed", :period => "month" %>
+<%= link_to "All", :controller => "articles", :action => "most_viewed", :period => "all" %>
+</div>
+
+<h2><%= @topic_path_last %></h2>
+<div class="article_list">
+  <ul>
+    <%= render :partial => "article_header", :collection => @articles, :locals => {:offset => @article_pages.current.offset} %>
+  </ul>
+</div>
+
+<div class="paginate">
+<%= link_to '前のページへ', pagination_params.merge({ :page => @article_pages.current.previous }) if @article_pages.current.previous %>
+<%= pagination_links(@article_pages, :params => pagination_params) %>
+<%= link_to '次のページへ', pagination_params.merge({ :page => @article_pages.current.next }) if @article_pages.current.next %>
+</div>

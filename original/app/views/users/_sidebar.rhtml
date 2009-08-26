@@ -1,0 +1,17 @@
+<div class="roundedTitle">
+  <span>
+    <% if session[:user] -%>
+      <%=h session[:user].loginname %>さん、こんにちは。
+    <% else -%>
+      ゲストさん、ようこそ。
+    <% end -%>
+  </span>
+</div>
+<div class="roundedContent">
+  <% if session[:user] -%>
+    <p>カルマ <%= session[:user].karma %></p>
+    <p>メモ数 <%= session[:user].articles.count %> (平均 <%= "%.2f" % session[:user].articles_count_average_per_day %> / day)</p>
+  <% else -%>
+    <p><%= link_to "メンバー登録する", :controller => "account", :action => "signup" %></p>
+  <% end -%>
+</div>

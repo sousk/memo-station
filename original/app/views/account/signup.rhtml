@@ -1,0 +1,9 @@
+<% @page_title ||= "メンバー登録" %>
+<% @topic_path_last ||= @page_title %>
+
+<h2><%= @page_title %></h2>
+<%= template_error_messages_for 'user' %>
+
+<%= render :partial => "signup_form" %>
+
+<%= javascript_tag "$('user_loginname').focus();" %>

@@ -1,0 +1,43 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  timeout: 5000
+
+mysql: &def
+  adapter: mysql
+  username: root
+  encoding: UTF8
+  password: 
+
+development:
+  database: db/development.sqlite3
+  # socket: /opt/local/var/run/mysql5/mysqld.sock
+  <<: *sqlite
+
+test:
+  database: db/test.sqlite3
+  # socket: /opt/local/var/run/mysql5/mysqld.sock
+  <<: *sqlite
+
+# development:
+#   adapter: mysql
+#   database: memo_station_development
+#   username: root
+#   password:
+#   socket: /var/lib/mysql/mysql.sock
+#   encoding: utf8
+# 
+# production:
+#   adapter: mysql
+#   database: memo_station_production
+#   username: root
+#   password:
+#   socket: /var/lib/mysql/mysql.sock
+#   encoding: utf8
+# 
+# test:
+#   adapter: mysql
+#   database: memo_station_test
+#   username: root
+#   password:
+#   socket: /var/lib/mysql/mysql.sock
+#   encoding: utf8
