@@ -9,14 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090806062615) do
+ActiveRecord::Schema.define(:version => 20090806065728) do
 
   create_table "articles", :force => true do |t|
+    t.integer  "user_id"
     t.string   "subject"
     t.string   "url"
     t.text     "body"
+    t.datetime "url_access_at"
     t.integer  "access_count"
     t.datetime "access_date"
+    t.datetime "modified_at",   :null => false
+    t.datetime "timestamp",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
