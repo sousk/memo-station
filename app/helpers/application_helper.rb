@@ -93,7 +93,7 @@ module ApplicationHelper
 
   #アイコン用を簡単に表示
   def icon_tag(name)
-    image_tag("/silk_icons/#{name}", :class => "silk_icon icon_#{name}")
+    image_tag("/silk_icons/#{name}.png", :class => "silk_icon icon_#{name}")
   end
 
   # タグクラウド
