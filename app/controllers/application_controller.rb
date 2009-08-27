@@ -6,6 +6,27 @@ APPLICATION_TITLE   = "bad-know-how shrine"
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  
+  include AuthenticatedSystem
+  before_filter :update_session
+  def update_session
+    logger.debug("before_filter: update_session")
+
+    logger.debug("セッション #{session ? "有効" : "無効"}")
+    if session[:user]
+
+      # user関連のDBの更新を反映させる。
+      session[:user].reload
+
+      ::ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.update(:session_expires => 1.years.from_now)
+      logger.debug("#{session[:user].loginname} のセッション生存期間を #{::ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS[:session_expires]} に更新しました in update_session()")
+    else
+      logger.debug("session[:user] は設定されていません in update_session()")
+    end
+    return true
+  end
+  
+  
 
   def my_category
     self.class.global_navi_category || self.controller_name

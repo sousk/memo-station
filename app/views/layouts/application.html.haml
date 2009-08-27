@@ -19,3 +19,13 @@
       #headerTop
         %h1= link_to APPLICATION_TITLE, :controller => ""
         #headerTopLink
+          = link_to icon_tag("user") + "mypage", :controller => "mypage"
+          &nbsp;&nbsp;
+          = link_to icon_tag("folder_explore") + "recently viewed", :controller => "mypage", :action => "recently_viewed"
+          &nbsp;&nbsp;
+          - if logged_in?
+            = link_to icon_tag("door_out") + "logout", {:controller => "account", :action => "logout"}
+          - else
+            = link_to icon_tag("door_in") + "login", :controller => "account", :action => "login"
+            %pre= icon_tag("door_out") + "logout", {:controller => "account", :action => "logout"}
+        
