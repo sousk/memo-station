@@ -1,0 +1,21 @@
+!!! XML utf8
+!!! 1.1 strict
+%html
+  %head
+    %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
+    %title= application_title
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
+    = auto_discovery_link_tag :rss, :controller => "articles", :action => "rss"
+    = javascript_include_tag :defaults
+    = javascript_include_tag "nifty"
+    = stylesheet_link_tag "base", "niftyCorners"
+    = stylesheet_link_tag "niftyPrint", :media => "print"
+    = stylesheet_link_tag(css_url(:action => "base")).gsub(/\.css/, "")
+    = stylesheet_link_tag(css_url(:action => "style")).gsub(/\.css/, "")
+    = javascript_include_tag "main"
+
+  %body
+    #container
+      #headerTop
+        %h1= link_to APPLICATION_TITLE, :controller => ""
+        #headerTopLink

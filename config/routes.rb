@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session
 
+  map.connect "rss",           :controller => "articles", :action => "rss"
+  map.css "css/:action", :controller => "stylesheet"
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
