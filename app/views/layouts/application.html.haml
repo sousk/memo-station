@@ -16,6 +16,7 @@
 
   %body
     #container
+      %h1= hoge
       #headerTop
         %h1= link_to APPLICATION_TITLE, :controller => ""
         #headerTopLink
@@ -43,8 +44,8 @@
             検索中...<%= icon_tag("database_gear.png") %>
             #search_results
           = render :partial => "users/sidebar"
-          render_component(:controller => "articles", :action => "sidebar_tag_cloud")
+          = render :partial => "articles/tag_cloud", :collection => latest_articles
           render_component(:controller => "articles", :action => "sidebar_most_viewed_articles")
           render_component(:controller => "articles", :action => "sidebar_latest_articles")
-          = render :partial => "layouts/search"
-          = render :partial => "layouts/syndicate"
+          = render :partial => "articles/search"
+          = render :partial => "articles/syndicate"
