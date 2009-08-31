@@ -1,0 +1,76 @@
+jonathan_sky_good:
+  id: 1
+  tag_id: 1
+  taggable_id: 1
+  taggable_type: Article
+  created_at: 2006-08-01
+  
+jonathan_sky_nature:
+  id: 2
+  tag_id: 3
+  taggable_id: 1
+  taggable_type: Article
+  created_at: 2006-08-02
+  
+jonathan_grass_nature:
+  id: 3
+  tag_id: 3
+  taggable_id: 2
+  taggable_type: Article
+  created_at: 2006-08-03
+  
+jonathan_rain_question:
+  id: 4
+  tag_id: 4
+  taggable_id: 3
+  taggable_type: Article
+  created_at: 2006-08-04
+  
+jonathan_rain_nature:
+  id: 5
+  tag_id: 3
+  taggable_id: 3
+  taggable_type: Article
+  created_at: 2006-08-05
+  
+jonathan_cloudy_nature:
+  id: 6
+  tag_id: 3
+  taggable_id: 4
+  taggable_type: Article
+  created_at: 2006-08-06
+  
+jonathan_still_cloudy_nature:
+  id: 7
+  tag_id: 3
+  taggable_id: 5
+  taggable_type: Article
+  created_at: 2006-08-07
+ 
+sam_ground_nature:
+  id: 8
+  tag_id: 3
+  taggable_id: 6
+  taggable_type: Article
+  created_at: 2006-08-08
+  
+sam_ground_bad:
+  id: 9
+  tag_id: 2
+  taggable_id: 6
+  taggable_type: Article
+  created_at: 2006-08-09
+  
+sam_flowers_good:
+  id: 10
+  tag_id: 1
+  taggable_id: 7
+  taggable_type: Article
+  created_at: 2006-08-10
+  
+sam_flowers_nature:
+  id: 11
+  tag_id: 3
+  taggable_id: 7
+  taggable_type: Article
+  created_at: 2006-08-11

@@ -1,7 +1,7 @@
 # The methods added to this helper will be available to all templates in the application.
 
 module ApplicationHelper
-  # トピックパスに表示しないコントローラー名
+  include TagsHelper
 
   @@topic_path_hide_controllers = ["articles", "account"]
 
@@ -98,19 +98,19 @@ module ApplicationHelper
 
   # タグクラウド
   # http://blog.craz8.com/articles/2005/10/28/acts_as_taggable-is-a-cool-piece-of-code
-  def tag_cloud(tag_cloud, category_list)
-    max, min = 0, 0
-    tag_cloud.each_value do |count|
-      max = count if count > max
-      min = count if count < min
-    end
-
-    divisor = ((max - min) / category_list.size) + 1
-
-    tag_cloud.each do |tag, count|
-      yield tag, count, category_list[(count - min) / divisor]
-    end
-  end
+  # def tag_cloud(tag_cloud, category_list)
+  #   max, min = 0, 0
+  #   tag_cloud.each_value do |count|
+  #     max = count if count > max
+  #     min = count if count < min
+  #   end
+  # 
+  #   divisor = ((max - min) / category_list.size) + 1
+  # 
+  #   tag_cloud.each do |tag, count|
+  #     yield tag, count, category_list[(count - min) / divisor]
+  #   end
+  # end
 
   def tag_item_url(options)
     url_for(:controller => "articles", :action => "search", :query => options[:query])
