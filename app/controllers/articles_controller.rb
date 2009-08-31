@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
   include ForRSS
   
   def index
-    @article_pages = Article.paginate :page => params['page'], :order => 'updated_at DESC'
-  end  
+    @articles = Article.paginate :page => params['page'], 
+      :per_page => params[:limit] || 30, :order => 'updated_at DESC'
+  end
 end

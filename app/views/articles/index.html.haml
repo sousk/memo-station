@@ -1,0 +1,11 @@
+.submenu
+  よく見たメモ
+  = link_to "今日", :controller => "articles", :action => "most_viewed", :period => "today"
+  = link_to "週", :controller => "articles", :action => "most_viewed", :period => "week"
+  = link_to "月", :controller => "articles", :action => "most_viewed", :period => "month"
+  = link_to "All", :controller => "articles", :action => "most_viewed", :period => "all"
+
+%h2= @topic_path_last
+.article_list
+  %ul
+    = render :partial => "article_header", :collection => @articles, :locals => {:offset => @article_pages.current.offset} %>
