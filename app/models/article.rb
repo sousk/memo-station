@@ -13,7 +13,7 @@ class Article < ActiveRecord::Base
   delegate :debug, :to => "self.class.logger"
   
   class << self
-    def latest(limit)
+    def latest(limit=10)
       Article.find(:all, :order => "created_at DESC", :limit => limit)
     end
     

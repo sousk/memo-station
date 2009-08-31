@@ -46,6 +46,6 @@
           = render :partial => "layouts/sidebar/user"
           = render :partial => "layouts/sidebar/popular_tags"
           = render :partial => "layouts/sidebar/most_viewed"
-          render_component(:controller => "articles", :action => "sidebar_latest_articles")
-          = render :partial => "articles/search"
-          = render :partial => "articles/syndicate"
+          = render :partial => "layouts/sidebar/latest_articles"
+          = render :partial => "layouts/sidebar/search"
+          = render :partial => "layouts/sidebar/syndicate"
