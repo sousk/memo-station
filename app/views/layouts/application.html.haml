@@ -44,7 +44,7 @@
             検索中...<%= icon_tag("database_gear.png") %>
             #search_results
           = render :partial => "users/sidebar"
-          = render :partial => "articles/tag_cloud", :collection => latest_articles
+          = render :partial => "articles/tag_cloud", :collection => Article.latest
           render_component(:controller => "articles", :action => "sidebar_most_viewed_articles")
           render_component(:controller => "articles", :action => "sidebar_latest_articles")
           = render :partial => "articles/search"
