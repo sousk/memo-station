@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 APPLICATION_TITLE   = "bad-know-how shrine"
+URL_TRUNCATE_LENGTH = 64
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time

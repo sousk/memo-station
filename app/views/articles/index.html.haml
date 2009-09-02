@@ -8,4 +8,4 @@
 %h2= @topic_path_last
 .article_list
   %ul
-    = render :partial => "article_header", :collection => @articles, :locals => {:offset => @article_pages.current.offset}
+    = render :partial => "header", :collection => @articles
