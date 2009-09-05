@@ -49,3 +49,12 @@
           = render :partial => "layouts/sidebar/latest_articles"
           = render :partial => "layouts/sidebar/search"
           = render :partial => "layouts/sidebar/syndicate"
+
+      #contentMain
+        - if flash[:notice]
+          #notice.flashNotice
+            = flash[:notice]
+        - if flash[:notice_duration]
+          TODO
+        
+        = @content_for_layout

@@ -60,23 +60,23 @@
     <%= render :partial => "layouts/search" %>
     <%= render :partial => "layouts/syndicate" %>
   </div>
-<div id="contentMain">
-  <%- if flash[:notice] -%>
-    <div class="flashNotice" id="notice">
-      <%= flash[:notice] %>
-    </div>
-    <%- if flash[:notice_duration] -%>
-      <%= javascript_tag "
-         Event.observe(window, 'load', function() {
-           setTimeout(function() {
-             $('notice').visualEffect('fade', {duration: 0.5});
-           }, #{flash[:notice_duration]} * 1000.0);
-         }, false);
-      " -%>
+  <div id="contentMain">
+    <%- if flash[:notice] -%>
+      <div class="flashNotice" id="notice">
+        <%= flash[:notice] %>
+      </div>
+      <%- if flash[:notice_duration] -%>
+        <%= javascript_tag "
+           Event.observe(window, 'load', function() {
+             setTimeout(function() {
+               $('notice').visualEffect('fade', {duration: 0.5});
+             }, #{flash[:notice_duration]} * 1000.0);
+           }, false);
+        " -%>
+      <%- end -%>
     <%- end -%>
-  <%- end -%>
-  <%= @content_for_layout %>
-</div>
+    <%= @content_for_layout %>
+  </div>
 </div>
 <%= render :partial => "layouts/footer" %>
 </div>

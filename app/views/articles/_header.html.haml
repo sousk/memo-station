@@ -1,9 +1,9 @@
 / TODO, missing some feautures
 %li
   .article_header_subject
-    - if header.created_at >= 1.days.ago
+    - if header.created_at && header.created_at >= 1.days.ago
       %span.new1 NEW
-    - elsif header.created_at >= 2.days.ago
+    - elsif header.created_at && header.created_at >= 2.days.ago
       %span.new2 NEW
       
   .article_header_tag
