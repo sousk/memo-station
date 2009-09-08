@@ -1,0 +1,15 @@
+- form_for @user, :url => {:controller => "account", :action=> "signup"} do |f|
+  %dl
+    %dt
+      %label{:class=>"label", :for=>"user_loginname"}= User.human_attribute_name("loginname")
+      %span#loginname_warn{:class=>"column_warn"}
+    %dd= f.text_field :loginname
+    %dt
+      %label{:class=>"label", :for=>"user_password"}= User.human_attribute_name("password")
+    %dd= f.password_field :password
+    %dt
+      %label{:class=>"label", :for=>"user_password_confirmation"}= User.human_attribute_name("password_confirmation")
+      %dd= f.password_field :password_confirmation
+
+    .submit
+      = my_submit_tag "これで登録する", :disable_with => "登録中..."
