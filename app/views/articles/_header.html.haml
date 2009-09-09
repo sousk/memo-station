@@ -8,6 +8,6 @@
       
   .article_header_tag
     - unless header.url.blank?
-      = link_to(h(truncate(header.url, URL_TRUNCATE_LENGTH)), header.url)
+      = link_to(h(truncate(header.url, :length => URL_TRUNCATE_LENGTH)), header.url)
       %br
   = content_tag :div, '', :id => "article_#{header.id}"
