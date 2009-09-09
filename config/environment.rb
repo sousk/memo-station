@@ -21,6 +21,8 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'mislav-will_paginate', 
     :version => '~> 2.3.11', :lib => 'will_paginate', :source => 'http://gems.github.com'
+    
+  config.gem 'rmagick'
   # config.gem 'technoweenie-restful_authentication',
   #   :source => 'http://gems.github.com'
   

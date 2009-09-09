@@ -1,0 +1,345 @@
+.list-wrapper form,
+.list-wrapper table,
+.list-wrapper p,
+.list-wrapper div,
+.list-wrapper fieldset {
+margin: 0;
+padding: 0;
+}
+
+table.list a {
+color: #0066CC;
+}
+
+.list-wrapper {
+margin: 5px 0;
+}
+
+table.list {
+width: 100%;
+}
+
+/* Header Styling
+   ======================== */
+
+.list-header {
+position: relative;
+background: #005CB8;
+}
+
+.list-header div.actions a {
+color: #fff;
+background: url(/images/add.gif) 1px 50% no-repeat;
+font-size: 13px;
+font-family: Trebuchet MS;
+font-weight: bold;
+text-decoration: none;
+padding: 1px 2px 1px 19px;
+}
+
+.list-header div.actions a:hover {
+background: #378CDF url(/images/add.gif) 1px 50% no-repeat;
+}
+
+.list-header h2 {
+color: #fff;
+padding: 3px 5px;
+margin: 0;
+font-size: 18px;
+font-weight: normal;
+font-family: Verdana, sans-serif;
+}
+
+.list-header .actions {
+position: absolute;
+right: 5px;
+bottom: 2px;
+}
+
+/* Table Column Headers
+   ============================= */
+
+
+table.list tr.header {
+background: #C5DBF7;
+}
+
+table.list th {
+font-size: 11px;
+padding: 2px;
+color: #fff;
+background: #555;
+letter-spacing: 0;
+font-family: Arial, sans-serif;
+text-align: left;
+padding-left: 5px;
+}
+
+/* Table Body Styling
+   ============================= */
+
+table.list td {
+padding: 5px 4px;
+border-bottom: solid 1px #C5DBF7;
+color: #333;
+font-family: Verdana, sans-serif;
+font-size: 11px;
+background-color: #E6F2FF;
+}
+
+table.list tr.even td {
+background-color: #fff;
+}
+
+
+table.list .edit td,
+table.list .create td {
+padding: 0;
+padding: 4px;
+}
+
+table.list td.action {
+padding: 0;
+padding-right: 2px;
+}
+
+table.list td a {
+font-family: Verdana, sans-serif;
+font-size: 11px;
+font-weight: bold;
+letter-spacing: -1px;
+padding: 2px;
+line-height: 18px;
+}
+
+table.list td a:hover {
+background: #ff8;
+}
+
+table.list .edit td,
+table.list .create td {
+background: #DAFFCD;
+}
+
+table.list .edit td,
+table.list .create td {
+border-top: solid 2px #fff;
+border-bottom: solid 2px #fff;
+}
+
+table.list .actions div {
+width: 95px;
+right: 0;
+text-align: right;
+float: right;
+padding-right: 2px;
+}
+
+/* List Footer Styling 
+   ========================== */
+
+.list-wrapper .list-footer {
+text-align: right;
+background: #005CB8;
+padding: 2px 0;
+border-bottom: none;
+}
+
+table.list tfoot a {
+color: #fff;
+font-size: 12px;
+font-weight: bold;
+letter-spacing: 0;
+font-family: Arial, sans-serif;
+}
+
+table.list tfoot a:hover {
+color: #0066CC;
+}
+
+/* Messages 
+   ========================= */
+
+table.list .empty-message td {
+background: #e8e8e8;
+text-align: center;
+color: #666;
+}
+
+table.list .error-message td {
+border-bottom: solid 1px #fff;
+background: #f66;
+color: #333;
+font-size: 11px;
+font-weight: bold;
+}
+
+table.list .error-message p {
+padding-left: 19px;
+background: url(/images/error.gif) 0 0 no-repeat;
+}
+
+table.list .error-message td.actions {
+background: #f66;
+text-align: right;
+}
+
+table.list .error-message td.actions a {
+color: #333;
+}
+
+/* Error Styling 
+   ========================== */
+
+table.list #errorExplanation {
+background: #fcc;
+margin: 2px 7px;
+border: solid 1px #f66;
+}
+
+table.list #errorExplanation h2 {
+padding: 2px 5px 3px 20px;
+color: #333;
+font-size: 11px;
+margin: 0;
+letter-spacing: 0;
+font-family: Verdana;
+background: #f66 url(/images/error.gif) 2px 1px no-repeat;
+}
+
+table.list #errorExplanation ul {
+margin: 0;
+padding: 2px 2px 4px 25px;
+}
+
+table.list #errorExplanation p {
+font-size: 11px;
+padding: 2px 5px;
+font-family: Verdana;
+margin: 0;
+}
+
+table.list #errorExplanation ul li {
+font-size: 11px;
+margin: 0;
+font-family: Verdana;
+padding: 0;
+}
+
+table.list .fieldWithErrors input {
+border: solid 1px #f00;
+}
+
+/* Loading Indicators
+   ============================== */
+
+.list-wrapper .loading-indicator {
+vertical-align: bottom;
+margin: 0;
+}
+
+.list-wrapper .list-header .loading-indicator,
+.list-wrapper .edit .loading-indicator,
+.list-wrapper .create .loading-indicator {
+vertical-align: bottom;
+margin-bottom: 3px;
+}
+
+
+
+
+/* Form Styling 
+   ============================== */
+   
+.list-wrapper .submit {
+font-weight: bold;
+font-size: 14px;
+font-family: Arial, sans-serif;
+letter-spacing: 0;
+margin: 0;
+margin-top: 5px;
+}
+
+.list-wrapper fieldset {
+border: none;
+}
+
+table.list label.required{
+font-weight: bold;
+}
+
+table.list label.example {
+font-size: 11px;
+font-family: arial;
+color: #888;
+}
+
+table.list h4 {
+padding: 2px;
+margin: 0;
+color: #1F7F00;
+font-size: 16px;
+letter-spacing: -1px;
+font-family: Georgia, Arial, sans-serif;
+}
+
+table.list .edit a,
+table.list .create a {
+font-size: 14px;
+font-weight: bold;
+font-family: Arial, sans-serif;
+letter-spacing: 0;
+}
+
+table.list p {
+clear: both;
+}
+
+table.list div.row {
+clear: both;
+float: none;
+padding: 2px;
+margin-left: 5px;
+}
+
+table.list div.form-element {
+float: left;
+margin-right: 10px;
+margin-bottom: 2px;
+}
+
+table.list label {
+display: block;
+font-family: Verdana, sans-serif;
+color: #555;
+font-size: 11px;
+padding-bottom: 1px;
+}
+
+table.list input,
+table.list select {
+font-size: 16px;
+font-weight: bold;
+font-family: Arial, sans-serif;
+letter-spacing: -1px;
+}
+
+table.list .form-element input {
+padding: 1px;
+border: solid 1px #1F7F00;
+}
+
+table.list textarea {
+height: 65px;
+font-family: Arial, sans-serif;
+font-size: 12px;
+padding: 1px;
+border: solid 1px #1F7F00;
+}
+
+/* IE hacks
+   ==================================== */
+   
+* html .list-header {
+height: 1%;
+}   

@@ -1,0 +1,261 @@
+@charset "utf-8";
+
+body{
+  color:#444;
+  background-color: #fff;
+  margin:10px 5% 30px 5%;
+  font-size:85%;
+}
+
+.indent {
+  margin-left: 20px;
+}
+
+table.confirm{
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  font-size:100%;
+}
+
+table.confirm th { 
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: #C6DBFF;
+} 
+
+table.confirm td.label { 
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: #eee;
+  padding: 2px 5px 2px 5px;
+} 
+
+table.confirm td { 
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: #fff;
+  padding: 2px 5px 2px 5px;
+} 
+
+table.confirm tr.enabled td { 
+  text-align      : center;
+  background-color: white;
+} 
+
+table.confirm tr.disabled td { 
+  text-align      : center;
+  background-color: #EFEFF7;
+} 
+
+label.confirm {
+  border-width: 0px 0px 1px 0px;
+  border-style: dashed;
+  border-color: #bbb;
+  padding: 1px 2px 1px 2px;
+  margin-bottom: 5px;
+  display: block;
+  width: 400px;
+  background-color: #eee;
+  font-weight:bold;
+}
+
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+b{
+  border-width: 0  0 1px 0;
+  border-style: solid;
+  border-color: #bbb;
+  padding: 1px 5px 1px 5px;
+  background-color: #eee;
+  display: block
+}
+
+p{
+}
+
+form p{
+}
+
+form.confirm label{
+  border-width: 0px 0px 1px 0px;
+  border-style: dashed;
+  border-color: #bbb;
+  padding: 1px 2px 1px 2px;
+  margin-bottom: 5px;
+  display: block;
+  width: 400px;
+  background-color: #eee;
+  font-weight:bold;
+}
+
+form td.label{
+  background-color: #eee;
+  vertical-align: top;
+}
+
+td.label{
+  background-color: #eee;
+  vertical-align: top;
+}
+
+td.labelWithErrors{
+  background-color: pink;
+  vertical-align: top;
+}
+
+a:link {
+    color     : #5496FC ;
+}
+a:visited {
+    color     : #5496FC ;
+}
+a:hover {
+    color     : #FFA458 ;
+    text-decoration   : none ;
+}
+
+.labelWithErrors {
+  background-color: pink;
+}
+
+table.confirm td.labelWithErrors{
+  background-color: pink;
+  vertical-align: top;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+div.flashNotice {
+  border: 2px solid #ccc;
+  width: 400px;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #FFFFEE;
+}
+
+div.flashNotice p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+div.flashError {
+  border: 2px solid red;
+  width: 400px;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #FFFFCC;
+}
+
+div.flashError p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#ErrorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#ErrorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#ErrorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#ErrorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color : #333;
+  height           : 18px;
+  width            : 0%;
+}
+
+.emphasized {
+  background  : #B00;
+  color       : white;
+  font-weight : bold;
+  padding     : 4px 24px 4px 8px;
+  margin-left : -4px;
+  border      : 1px dotted #F77;
+}
+
+.title h2 {
+  border      : 1px solid black;
+  font-size   : 120%;
+  font-weight : bold;
+  padding     : 1px 2px 1px 5px;
+  margin      : 0px;
+  background  : #C6D3EF;
+}
+
+.content {
+  background-color   : #fff;
+  border             : 3px solid #DCDCDC;
+  clear              : both;
+  padding            : 8px;
+  margin             : 4px 8px 4px 12px;
+  -moz-border-radius : 20px;
+}
+
+.sortable .handle {
+  background-color : #ECF3E1;
+  border           : 1px solid #C5DEA1;
+  margin           : 4px;
+  padding          : 2px;
+  cursor           : move;
+}
+
