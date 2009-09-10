@@ -3,7 +3,7 @@
 <div class="roundedContent">
 <ul>
  <% Article.latest.each do |article| -%>
- <li><%= link_to h(truncate(article.subject, 21)), :controller => "articles", :action => "show", :id => article %></li>
+ <li><%= link_to h(truncate(article.subject, :length => 21)), :controller => "articles", :action => "show", :id => article %></li>
  <% end -%>
 </ul>
 </div>

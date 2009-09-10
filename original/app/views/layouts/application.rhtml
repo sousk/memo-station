@@ -22,63 +22,63 @@
 </head>
 <body>
 <div id="container">
-<div id="headerTop">
-  <h1><%= link_to APPLICATION_TITLE, :controller => "" -%></h1>
-  <div id="headerTopLink">
-    <%= link_to icon_tag("user") + "マイページ", :controller => "mypage" %>
-    &nbsp;&nbsp;
-    <%= link_to icon_tag("folder_explore") + "最近見たメモ", :controller => "articles", :action => "recent_viewed" %>
-    &nbsp;&nbsp;
-    <% if @session[:user] -%>
-    <%= link_to icon_tag("door_out") + "ログアウト", {:controller => "account", :action => "logout"}, :confirm => "本当にログアウトしてもよろしいですか？" %>
-    <% else -%>
-    <%= link_to icon_tag("door_in") + "ログイン", :controller => "account", :action => "login" %>
-    <% end -%>
-  </div>
-  <div id="description">〜環境設定やプログラミングなどの雑多な情報をデータベースで集中管理する実験〜</div>
-</div>
-<div id="globalNaviArea" class="clearfix">
-  <%= content_for_global_navi %>
-  <div id="topic_path_list">
-  <% if topic_path_list -%>
-  <%= topic_path_list %>
-  <% else -%>
-  &nbsp;
-  <% end -%>
-  </div>
-</div>
-<div id="contentMainWithSidebar" class="clearfix">
-  <div id="sidebar" class="sidebar">
-    <div id="search-indicator" style="display: none">
-    検索中...<%= icon_tag("database_gear") %>
+  <div id="headerTop">
+    <h1><%= link_to APPLICATION_TITLE, :controller => "" -%></h1>
+    <div id="headerTopLink">
+      <%= link_to icon_tag("user") + "マイページ", :controller => "mypage" %>
+      &nbsp;&nbsp;
+      <%= link_to icon_tag("folder_explore") + "最近見たメモ", :controller => "articles", :action => "recent_viewed" %>
+      &nbsp;&nbsp;
+      <% if @session[:user] -%>
+      <%= link_to icon_tag("door_out") + "ログアウト", {:controller => "account", :action => "logout"}, :confirm => "本当にログアウトしてもよろしいですか？" %>
+      <% else -%>
+      <%= link_to icon_tag("door_in") + "ログイン", :controller => "account", :action => "login" %>
+      <% end -%>
     </div>
-    <div id="search_results"></div>
-    <%= render :partial => "users/sidebar" %>
-    <%= render_component(:controller => "articles", :action => "sidebar_tag_cloud") %>
-    <%= render_component(:controller => "articles", :action => "sidebar_most_viewed_articles") %>
-    <%= render_component(:controller => "articles", :action => "sidebar_latest_articles") %>
-    <%= render :partial => "layouts/search" %>
-    <%= render :partial => "layouts/syndicate" %>
+    <div id="description">〜環境設定やプログラミングなどの雑多な情報をデータベースで集中管理する実験〜</div>
   </div>
-  <div id="contentMain">
-    <%- if flash[:notice] -%>
-      <div class="flashNotice" id="notice">
-        <%= flash[:notice] %>
+  <div id="globalNaviArea" class="clearfix">
+    <%= content_for_global_navi %>
+    <div id="topic_path_list">
+    <% if topic_path_list -%>
+    <%= topic_path_list %>
+    <% else -%>
+    &nbsp;
+    <% end -%>
+    </div>
+  </div>
+  <div id="contentMainWithSidebar" class="clearfix">
+    <div id="sidebar" class="sidebar">
+      <div id="search-indicator" style="display: none">
+      検索中...<%= icon_tag("database_gear") %>
       </div>
-      <%- if flash[:notice_duration] -%>
-        <%= javascript_tag "
-           Event.observe(window, 'load', function() {
-             setTimeout(function() {
-               $('notice').visualEffect('fade', {duration: 0.5});
-             }, #{flash[:notice_duration]} * 1000.0);
-           }, false);
-        " -%>
+      <div id="search_results"></div>
+      <%= render :partial => "users/sidebar" %>
+      <%= render_component(:controller => "articles", :action => "sidebar_tag_cloud") %>
+      <%= render_component(:controller => "articles", :action => "sidebar_most_viewed_articles") %>
+      <%= render_component(:controller => "articles", :action => "sidebar_latest_articles") %>
+      <%= render :partial => "layouts/search" %>
+      <%= render :partial => "layouts/syndicate" %>
+    </div>
+    <div id="contentMain">
+      <%- if flash[:notice] -%>
+        <div class="flashNotice" id="notice">
+          <%= flash[:notice] %>
+        </div>
+        <%- if flash[:notice_duration] -%>
+          <%= javascript_tag "
+             Event.observe(window, 'load', function() {
+               setTimeout(function() {
+                 $('notice').visualEffect('fade', {duration: 0.5});
+               }, #{flash[:notice_duration]} * 1000.0);
+             }, false);
+          " -%>
+        <%- end -%>
       <%- end -%>
-    <%- end -%>
-    <%= @content_for_layout %>
+      <%= @content_for_layout %>
+    </div>
   </div>
-</div>
-<%= render :partial => "layouts/footer" %>
+  <%= render :partial => "layouts/footer" %>
 </div>
 </body>
 </html>
