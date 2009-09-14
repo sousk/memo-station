@@ -351,7 +351,8 @@ a:hover, a:active {
 }
 
 #topic_path_list a {
-  color: <%= @link_font_color %>;
+  /* color: <%= @link_font_color %>; */
+  color: #FFF;
 }
 
 
@@ -472,6 +473,7 @@ h1:first-letter, h1 a:first-letter {
 /*----------------------------------------------------------------------------*/
 
 #contentMainWithSidebar {
+  clear: both;
   background: <%= @colors[:sidebar_background] %>;
 }
 
@@ -988,7 +990,7 @@ p {
 /* タイトル付きリスト */
 /*----------------------------------------------------------------------------*/
 
-div#globalNaviArea {
+#globalNaviArea {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   border: 0px solid;

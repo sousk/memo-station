@@ -29,7 +29,7 @@
             = link_to icon_tag("door_in") + "login", :controller => "account", :action => "login"
         #description 〜環境設定やプログラミングなどの雑多な情報をデータベースで集中管理する実験〜
 
-      #globalNaviArea{ :class=>"clearfix"}
+      #globalNaviArea
         = content_for_global_navi
         #topic_path_list
           -if topic_path_list
@@ -37,7 +37,7 @@
           -else
             &nbsp;
 
-      #contentMainWithSidebar{:class=>"clearfix"}
+      #contentMainWithSidebar
         #sidebar{:class=>"sidebar"}
           #search-indicator{:style=>"display: none"}
             検索中...
