@@ -1,0 +1,128 @@
+/ <% if @article.new_record? -%>
+/ <% @page_title ||= "新規メモ" -%>
+/ <% button_name ||= "登録" -%>
+/ <% else -%>
+/ <% @page_title ||= "メモ編集" -%>
+/ <% button_name ||= "更新" -%>
+/ <% end -%>
+/ <% @topic_path_last ||= @page_title %>
+
+%h2= @topic_path_last || @page_title || @article.new_record? ? "新規メモ":"メモ編集"
+= template_error_messages_for :article
+
+- form_for :article, @article, :url => {:action => "update", :id => @article}, :html => {:id => "article_form"} do |f|
+  %dl
+    %dt
+      / ■題名
+      %label{:for=>"article_subject"}
+        = Article.human_attribute_name("subject")
+      %span{:id=>"article_subject_warn", :class=>"column_warn"}
+    %dd= f.text_field "subject"
+
+    %dd{:id=>"article_url_show", :style=>"display: none"}
+      / URL表示アイコン
+      = link_to_function(icon_tag("world_add"), "article_url_show()")
+    %dt
+      / ■URL
+      %label{:for=>"article_url", :id=>"article_url_label", :style=>"display: none"}
+        = Article.human_attribute_name("url")
+    %dd= f.text_field "url", :autocomplete => "off", :style => "display: none"
+    %dt
+      / ■タグ
+    %dt
+      %label{:for=>"article_my_tags"}
+        = Article.human_attribute_name("my_tags")
+    %dd
+      = f.text_field "my_tags", :autocomplete => "off"
+/ 
+/     <!-- タグ候補 -->
+/     <dd id="article_tag_choice" style="display: none"></dd>
+/ 
+/     <!-- ■内容 -->
+/     <dt><label for="article_body"><%= Article.human_attribute_name("body") %></label></dt>
+/     <dd><%= f.text_area "body" %></dd>
+/   </dl>
+/ 
+/   <div class="submit">
+/     <%= my_submit_tag "この内容で#{button_name}", :disable_with => "#{button_name}中...", :id => "submit" %>
+/   </div>
+/ <% end -%>
+/ 
+/ <%= javascript_tag "
+/ 
+/ function article_edit_auto_focus() {
+/   // フォーカス設定
+/   // 題名→内容→タグの順に空いたところを見て、すべて埋まっていたら内容にフォーカスする
+/   if (!Field.present('article_subject')) {
+/     $('article_subject').focus();
+/   } else if (!Field.present('article_body')) {
+/     $('article_body').focus();
+/   } else if (!Field.present('article_my_tags')) {
+/     $('article_my_tags').focus();
+/   } else {
+/     $('article_body').focus();
+/   }
+/ }
+/ 
+/ Event.observe(window, 'load', function(){
+/   article_edit_auto_focus();
+/ 
+/   // URL覧
+/   if (Field.present('article_url')) {
+/     // フィルインあり→「URL覧」と「URL表示アイコン」を表示
+/     $('article_url_label').show();
+/     $('article_url').show();
+/     $('article_url_show').hide();
+/   } else {
+/     // フィルインあり→「URL覧」と「URL表示アイコン」を消去
+/     $('article_url_label').hide();
+/     $('article_url').hide();
+/     $('article_url_show').show();
+/   }
+/ }, false);
+/ 
+/ // 「URL表示アイコン」のクリックに対応。
+/ // URL覧を表示する。
+/ function article_url_show() {
+/   $('article_url_show').hide();
+/   $('article_url_label').show();
+/   $('article_url').show();
+/   $('article_url').focus();
+/ }
+/ " %>
+/ 
+/ <% if defined? Chasen -%>
+/   <%= observe_field(:article_subject,{
+/     :frequency => 0.5,
+/     :url => {:controller => "articles",:action => "subject_input_remote"},
+/     :with => "'subject=' + encodeURIComponent(value) + '&my_tags=' + encodeURIComponent($F('article_my_tags'))",
+/   })%>
+/ <% end -%>
+/ 
+/ <%= observe_field(:article_my_tags,{
+/   :frequency => 0.5,
+/   :url => {:controller => "articles",:action => "my_tags_input_remote"},
+/   :with => "'my_tags=' + encodeURIComponent($F('article_my_tags'))",
+/ })%>
+/ 
+/ <%= observe_field(:article_subject,{
+/   :frequency => 0.5,
+/   :url => {:controller => "articles",:action => "subject_input_remote"},
+/   :with => "'subject=' + encodeURIComponent($F('article_subject')) + '&id=#{@article.id}'"
+/ })%>
+/ 
+/ <%= javascript_tag "
+/ 
+/ // タグのフィールドにあるタグのリスト
+/ function tag_names_get(id) {
+/     return $F(id).strip().split(/\s+/);
+/ }
+/ 
+/ // タグのフィールドに指定のタグを入力する。
+/ // すでにタグがある場合はそれを消す。
+/ function tag_toggle(tag_name) {
+/     var id = 'article_my_tags';
+/     $(id).value = __tag_toggle(tag_names_get(id, tag_name));
+/ }
+/ 
+/ " %>

@@ -35,4 +35,16 @@ class ArticlesController < ApplicationController
     @articles = Article.paginate :page => params['page'], 
       :per_page => params[:limit] || 30, :order => 'updated_at DESC'
   end
+  
+  def new
+    @article = Article.new
+    [:subject, :body, :url].each do |name|
+      @article[name] = params[name].to_s.strip
+    end
+    render :action => :edit
+  end
+  
+  def edit
+    @article = Article.find(params[:id])
+  end
 end
