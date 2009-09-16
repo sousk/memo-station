@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  has_one :user_info
+  has_many :articles
+  has_many :article_view_logs, :order => "created_at DESC"
+  has_many :viewed_articles, :through => :article_view_logs, :source => :article
+  delegate :karma, :to => :user_info
+
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -44,6 +50,14 @@ class User < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def articles_count_average_per_day
+    articles.count / alive_days
+  end
+  # 登録してから何日たっているか？(小数)
+  def alive_days
+    (Time.now - created_at) / 1.days
   end
 
   protected

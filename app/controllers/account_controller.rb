@@ -17,23 +17,23 @@ class AccountController < ApplicationController
     }
   end
 
-  def login
-    if session[:user]
-      flash[:notice]  = "すでにログイン済みです。"
-      redirect_to_top
-      return
-    end
-
-    if request.post?
-      if session[:user] = User.authenticate(params[:loginname], params[:password])
-        flash[:notice]  = "ログインしました。"
-        redirect_to_top
-        return
-      else
-        flash[:notice] = render_to_string :partial => "login_failure"
-      end
-    end
-  end
+  # def login
+  #   if session[:user]
+  #     flash[:notice]  = "すでにログイン済みです。"
+  #     redirect_to_top
+  #     return
+  #   end
+  # 
+  #   if request.post?
+  #     if session[:user] = User.authenticate(params[:loginname], params[:password])
+  #       flash[:notice]  = "ログインしました。"
+  #       redirect_to_top
+  #       return
+  #     else
+  #       flash[:notice] = render_to_string :partial => "login_failure"
+  #     end
+  #   end
+  # end
 
   def logout
     session[:user] = nil

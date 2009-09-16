@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090831093821) do
+ActiveRecord::Schema.define(:version => 20090914142050) do
 
   create_table "article_view_logs", :force => true do |t|
     t.integer  "article_id"
@@ -44,6 +44,30 @@ ActiveRecord::Schema.define(:version => 20090831093821) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "user_info", :force => true do |t|
+    t.integer  "user_id",         :default => 0,     :null => false
+    t.integer  "karma",           :default => 0
+    t.string   "name_kanji1",     :default => "",    :null => false
+    t.string   "name_kanji2",     :default => "",    :null => false
+    t.string   "name_kana1",      :default => "",    :null => false
+    t.string   "name_kana2",      :default => "",    :null => false
+    t.string   "post_code1",      :default => "",    :null => false
+    t.string   "post_code2",      :default => "",    :null => false
+    t.integer  "prefecture_id",   :default => 0,     :null => false
+    t.string   "town_name",       :default => "",    :null => false
+    t.string   "home_tel",        :default => "",    :null => false
+    t.string   "mobile_tel",      :default => "",    :null => false
+    t.integer  "gender_id",       :default => 0,     :null => false
+    t.date     "birthday_date"
+    t.boolean  "email_delivery"
+    t.string   "pc_email",        :default => "",    :null => false
+    t.string   "mobile_email",    :default => "",    :null => false
+    t.string   "nickname",        :default => "",    :null => false
+    t.boolean  "auto_login_flag", :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

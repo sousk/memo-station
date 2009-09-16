@@ -9,7 +9,6 @@
 </div>
 <div class="roundedContent">
   <% if logged_in? -%>
-    <p>カルマ <%= current_user.karma %></p>
     <p>メモ数 <%= current_user.articles.count %> (平均 <%= "%.2f" % current_user.articles_count_average_per_day %> / day)</p>
   <% else -%>
     <p><%= link_to "メンバー登録する", :controller => "account", :action => "signup" %></p>

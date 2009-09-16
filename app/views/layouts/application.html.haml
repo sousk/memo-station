@@ -24,9 +24,9 @@
           = link_to icon_tag("folder_explore") + "recently viewed", :controller => "mypage", :action => "recently_viewed"
           &nbsp;&nbsp;
           - if logged_in?
-            = link_to icon_tag("door_out") + "logout", {:controller => "account", :action => "logout"}
+            = link_to icon_tag("door_out") + "logout", logout_path
           - else
-            = link_to icon_tag("door_in") + "login", :controller => "account", :action => "login"
+            = link_to icon_tag("door_in") + "login", login_path
         #description 〜環境設定やプログラミングなどの雑多な情報をデータベースで集中管理する実験〜
 
       #globalNaviArea
