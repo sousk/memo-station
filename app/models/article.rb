@@ -27,5 +27,15 @@ class Article < ActiveRecord::Base
         order by article_id_count_all DESC LIMIT #{offset},#{limit}")
     end
   end
+  
+  # for form object
+  def my_tags
+    # self.tag_names * " "
+    self.tag_list.join(',')
+  end
+
+  def my_tags=(tags)
+    self.tag(tags, :clear => true, :separator => proc{|t|t.split(TAG_SEPARATOR)})
+  end
 end
 

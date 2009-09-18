@@ -10,7 +10,7 @@
 %h2= @topic_path_last || @page_title || @article.new_record? ? "新規メモ":"メモ編集"
 = template_error_messages_for :article
 
-- form_for :article, @article, :url => {:action => "update", :id => @article}, :html => {:id => "article_form"} do |f|
+- form_for @article, :html => {:id => "article_form"} do |f|
   %dl
     %dt
       / ■題名
@@ -33,7 +33,8 @@
       %label{:for=>"article_my_tags"}
         = Article.human_attribute_name("my_tags")
     %dd
-      = f.text_field "my_tags", :autocomplete => "off"
+      / = f.text_field "my_tags", :autocomplete => "off"
+      = f.text_field :tag_list, :autocomplete => "off"
 / 
 /     <!-- タグ候補 -->
 /     <dd id="article_tag_choice" style="display: none"></dd>
