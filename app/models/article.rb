@@ -28,6 +28,15 @@ class Article < ActiveRecord::Base
     end
   end
   
+  # update :modified_at only when body or url has been changed
+  def before_update
+    pre_article = self.class.find(self.id)
+    if pre_article.body != self.body || pre_article.url != self.url
+      self.modified_at = Time.now
+    end
+  end
+  
+  
   # for form object
   def my_tags
     # self.tag_names * " "

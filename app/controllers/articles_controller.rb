@@ -28,6 +28,8 @@ module ForRSS
 end
 
 class ArticlesController < ApplicationController
+  before_filter :login_required, :except => [:index]
+  
   extend ActionView::Helpers::SanitizeHelper::ClassMethods
   include ForRSS
   
@@ -42,6 +44,29 @@ class ArticlesController < ApplicationController
       @article[name] = params[name].to_s.strip
     end
     render :action => :edit
+  end
+  
+  def update
+    if params[:id].blank?
+      @article = Article.new :modified_at => Time.now
+      status = "投稿"
+    else
+      status = "更新"
+      @article = Article.find(params[:id])
+    end
+    @before_article = @article.dup
+    @article.attributes = params[:article]
+    @article.user ||= current_user
+    Article.transaction {
+      unless @article.save
+        render :action => "edit"
+        return
+      end
+    }
+    Mailman.deliver_article_update(self, Time.now, :article => {:before => @before_article, :after => @article})
+    flash[:notice] = "#{status}しました。"
+    flash[:notice_duration] = 0.8
+    redirect_to :action => "list"
   end
   
   def edit

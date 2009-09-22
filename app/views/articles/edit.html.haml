@@ -1,16 +1,16 @@
-/ <% if @article.new_record? -%>
-/ <% @page_title ||= "新規メモ" -%>
-/ <% button_name ||= "登録" -%>
-/ <% else -%>
-/ <% @page_title ||= "メモ編集" -%>
-/ <% button_name ||= "更新" -%>
-/ <% end -%>
-/ <% @topic_path_last ||= @page_title %>
+- if @article.new_record?
+  - @page_title ||= "新規メモ"
+  - button_name ||= "登録"
+- else
+  - @page_title ||= "メモ編集"
+  - button_name ||= "更新"
 
-%h2= @topic_path_last || @page_title || @article.new_record? ? "新規メモ":"メモ編集"
+- @topic_path_last ||= @page_title
+
+%h2= @topic_path_last
 = template_error_messages_for :article
 
-- form_for @article, :html => {:id => "article_form"} do |f|
+- form_for @article, :url =>{:action=>'update'}, :html => {:id => "article_form"} do |f|
   %dl
     %dt
       / ■題名
@@ -33,20 +33,18 @@
       %label{:for=>"article_my_tags"}
         = Article.human_attribute_name("my_tags")
     %dd
-      / = f.text_field "my_tags", :autocomplete => "off"
       = f.text_field :tag_list, :autocomplete => "off"
-/ 
-/     <!-- タグ候補 -->
-/     <dd id="article_tag_choice" style="display: none"></dd>
-/ 
-/     <!-- ■内容 -->
-/     <dt><label for="article_body"><%= Article.human_attribute_name("body") %></label></dt>
-/     <dd><%= f.text_area "body" %></dd>
-/   </dl>
-/ 
-/   <div class="submit">
-/     <%= my_submit_tag "この内容で#{button_name}", :disable_with => "#{button_name}中...", :id => "submit" %>
-/   </div>
+    %dd{:id=>"article_tag_choice", :style=>"display: none"}
+      / タグ候補
+    %dt
+      / ■内容
+      %label{:for=>"article_body"}
+        = Article.human_attribute_name("body")
+    %dd
+      = f.text_area "body"
+
+  .submit
+    = my_submit_tag "この内容で#{button_name}", :disable_with => "#{button_name}中...", :id => "submit"
 / <% end -%>
 / 
 / <%= javascript_tag "

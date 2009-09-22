@@ -5,10 +5,10 @@ class CreateArticles < ActiveRecord::Migration
       t.string :subject
       t.string :url
       t.text :body
-      t.timestamp :url_access_at, :null => true
       t.integer :access_count
       t.datetime :access_date
-      t.timestamp :modified_at, :timestamp, :null => false
+      t.timestamp :url_access_at, :null => true
+      t.timestamp :modified_at, :null => false
 
       t.timestamps
     end

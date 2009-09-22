@@ -23,11 +23,10 @@ ActiveRecord::Schema.define(:version => 20090914142050) do
     t.string   "subject"
     t.string   "url"
     t.text     "body"
-    t.datetime "url_access_at"
     t.integer  "access_count"
     t.datetime "access_date"
+    t.datetime "url_access_at"
     t.datetime "modified_at",   :null => false
-    t.datetime "timestamp",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
