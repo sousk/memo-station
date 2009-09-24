@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(:version => 20090914142050) do
     t.string   "subject"
     t.string   "url"
     t.text     "body"
-    t.integer  "access_count"
+    t.integer  "access_count",  :default => 0
     t.datetime "access_date"
     t.datetime "url_access_at"
-    t.datetime "modified_at",   :null => false
+    t.datetime "modified_at",                  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20090914142050) do
     t.string "name"
   end
 
-  create_table "user_info", :force => true do |t|
+  create_table "user_infos", :force => true do |t|
     t.integer  "user_id",         :default => 0,     :null => false
     t.integer  "karma",           :default => 0
     t.string   "name_kanji1",     :default => "",    :null => false

@@ -1,6 +1,6 @@
 class UserInfo < ActiveRecord::Migration
   def self.up
-    create_table "user_info" do |t|
+    create_table "user_infos" do |t|
       t.column "user_id", :integer, :limit => 10, :default => 0, :null => false
       t.column 'karma',   :integer, :default => 0
       t.column "name_kanji1", :string, :default => "", :null => false
@@ -25,5 +25,6 @@ class UserInfo < ActiveRecord::Migration
   end
 
   def self.down
+    drop_table :article_view_logs
   end
 end

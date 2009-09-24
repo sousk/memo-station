@@ -46,7 +46,7 @@ module ApplicationHelper
       class_name = "nonActive"
     end
 
-    ary << link_to(icon_tag("book_open") + "メモ一覧", {:controller => "articles", :action => "list"}, {:class => class_name})
+    ary << link_to(icon_tag("book_open") + "メモ一覧", {:controller => "articles", :action => "index"}, {:class => class_name})
 
 
     if development? || controller.local_request? || (session[:user] && session[:user].loginname == "ikeda")

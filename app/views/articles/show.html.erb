@@ -1,0 +1,31 @@
+<% @page_title ||= @article.subject %>
+<% @topic_path_last ||= h(@page_title) %>
+
+<div class="article_header_subject">
+<h2><%=h @page_title %><%= new_icon @article %></h2>
+</div>
+
+<div class="article_body">
+<%= article_simple_format(@article.body) %>
+</div>
+
+<div class="article_footer">
+  <%= link_to icon_tag("bin"), {:action => "destroy", :id => @article}, :confirm => "本当にこのメモを捨ててもよろしいですか？", :post => true %>
+  <%= link_to icon_tag("pencil"), {:action => "edit", :id => @article} %>
+  <br/>
+  <%- unless @article.url.blank? -%>
+    URL: <%= link_to h(truncate(@article.url, URL_TRUNCATE_LENGTH)), @article.url %><br />
+  <%- end -%>
+  <% unless @article.tag_list.empty? -%>
+    Tags:
+    <% @article.tag_names.each do |tag_name| %>
+      <%= link_to(h(tag_name), :controller => "articles", :action => "search", :query => tag_name) %>
+    <% end -%>
+  <% end -%>
+  <br />
+  Posted by <%= link_to h(@article.user.login), profile_url(:login => @article.user.login) %>
+  at <%= @article.created_at %>
+  (<%= @article.access_count %> Views)<br />
+</div>
+
+<!-- render :partial => "related_articles" -->

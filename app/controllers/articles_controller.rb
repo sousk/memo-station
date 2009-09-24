@@ -28,14 +28,16 @@ module ForRSS
 end
 
 class ArticlesController < ApplicationController
-  before_filter :login_required, :except => [:index]
+  DEFAULT_PER_PAGE = 30
+  
+  before_filter :login_required, :except => [:index, :show]
   
   extend ActionView::Helpers::SanitizeHelper::ClassMethods
   include ForRSS
   
   def index
     @articles = Article.paginate :page => params['page'], 
-      :per_page => params[:limit] || 30, :order => 'updated_at DESC'
+      :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'updated_at DESC'
   end
   
   def new
@@ -63,13 +65,61 @@ class ArticlesController < ApplicationController
         return
       end
     }
-    Mailman.deliver_article_update(self, Time.now, :article => {:before => @before_article, :after => @article})
+    # Mailman.deliver_article_update(self, Time.now, :article => {:before => @before_article, :after => @article})
     flash[:notice] = "#{status}しました。"
     flash[:notice_duration] = 0.8
-    redirect_to :action => "list"
+    redirect_to :action => "index"
+  end
+  
+  def show
+    @article = Article.get params[:id], current_user
+    
+    last = viewed_timestamps[params[:id]]
+    if last.nil? || Time.now > 1.day.since(last)
+      viewed_timestamps[params[:id]] = Time.now
+      if logged_in? && (@article.user.id != current_user.id || ENV["RAILS_ENV"] == "development")
+        # article.user.user_info.karma += 1
+        # article.user.user_info.save!
+      end
+    end
   end
   
   def edit
     @article = Article.find(params[:id])
+  end
+  
+  def bookmark
+    @articles = Article.paginate :page => params['page'], 
+      :conditions => "url is not null",
+      :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'url_access_at DESC'
+    render :action => "index"
+  end
+  
+  def most_viewed
+    case params[:period]
+    when "today"
+      @page_title = "今日"
+      before_time = Time.now.beginning_of_day
+    when "week"
+      @page_title = "1週間でいちばん"
+      before_time = 1.week.ago
+    when "month"
+      @page_title = "1ヶ月間でいちばん"
+      before_time = 1.month.ago
+    when "all"
+      @page_title = "全体でいちばん"
+      before_time = 1.years.ago
+    else
+      @page_title = "今日"
+      before_time = Time.now.beginning_of_day
+    end
+    
+    @articles = Article.most_viewed_with_paginate before_time, params[:page], DEFAULT_PER_PAGE
+    render :action => 'index'
+  end
+  
+  private
+  def viewed_timestamps
+    session[:article_viewed_timestamp] ||= {}
   end
 end

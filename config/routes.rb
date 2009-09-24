@@ -1,16 +1,23 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :articles
+  map.resources :articles, :collection => {
+    :bookmark => :get,
+    :most_viewed => :get
+  }
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.profile "profile/:login", :controller => "user_info",  :action => "profile"
+  
   
   map.resources :users
   map.resource :session
+  
 
   map.connect "rss",           :controller => "articles", :action => "rss"
   map.connect "signup",      :controller => "account",  :action => "signup"
+  # map.connect "bookmark",      :controller => "articles", :action => "bookmark"
   map.css "css/:action", :controller => "stylesheet"
 
   # The priority is based upon order of creation: first created -> highest priority.
