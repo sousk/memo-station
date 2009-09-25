@@ -206,7 +206,6 @@ body {
 <%=
   image_file = Pathname("#{RAILS_ROOT}/public/images/__body_background.png")
   if !image_file.exist? || ENV["RAILS_ENV"] == "development"
-    require "RMagick"
     image = Magick::Image.new(16, 480, Magick::GradientFill.new(0, 0, 100, 0, Palette[9], Palette[10]))
     image.write(image_file.to_s)
   end

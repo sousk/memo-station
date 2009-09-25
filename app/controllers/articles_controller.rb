@@ -23,7 +23,7 @@ module ForRSS
     #   end
     # end
     headers["Content-Type"] = "application/xml; charset=UTF-8"
-    render :text => "not implemented yet", :layout => false
+    render :text => "<msg>not implemented yet</msg>", :layout => false
   end
 end
 
