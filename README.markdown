@@ -7,7 +7,23 @@ It has been used in some company for years.
 memo-station originally developed by Akira Ikeda.
 
 
-missing feature
+v2
+--------
+
+* redesign data structure
+* change html layout with haml
+* switch to jQuery
+* change CSS with liquid layout
+* JSON feed
+
+
+plan
+--------
+
+* v3: implement wiki-mode
+
+
+missing features
 --------
 
 original version has the features below
@@ -17,12 +33,6 @@ original version has the features below
 * bookmarklet
 * seach extension for firefox
 * emacs interface
-
-plan
---------
-
-* v2: refactoring: re-design data architecture, rewrite CSS
-* v3: implement wiki-mode
 
 
 history
