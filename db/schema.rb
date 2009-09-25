@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090914142050) do
+ActiveRecord::Schema.define(:version => 20090925092200) do
 
   create_table "article_view_logs", :force => true do |t|
     t.integer  "article_id"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 20090914142050) do
     t.datetime "access_date"
     t.datetime "url_access_at"
     t.datetime "modified_at",                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cards", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

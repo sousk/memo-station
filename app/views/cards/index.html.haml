@@ -1,0 +1,6 @@
+%ul
+  - for card in @cards
+    %li
+      .card
+        .name= link_to(card.name, card)
+        .content= truncate card.content, 30

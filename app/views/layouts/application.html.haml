@@ -7,50 +7,23 @@
     %link{:rel => "shortcut icon", :href => "/favicon.ico"}
     = auto_discovery_link_tag :atom, :controller => "articles", :action => "feed", :title => APPLICATION_TITLE
     = javascript_include_tag :defaults
-    = javascript_include_tag "nifty"
-    = stylesheet_link_tag "base", "niftyCorners"
-    = stylesheet_link_tag "niftyPrint", :media => "print"
-    = stylesheet_link_tag(css_url(:action => "base")).gsub(/\.css/, "")
-    = stylesheet_link_tag(css_url(:action => "style")).gsub(/\.css/, "")
-    = javascript_include_tag "main"
 
   %body
-    #container
-      #headerTop
-        %h1= link_to APPLICATION_TITLE, :controller => ""
-        #headerTopLink
-          = link_to icon_tag("user") + "mypage", :controller => "mypage"
-          &nbsp;&nbsp;
-          = link_to icon_tag("folder_explore") + "recently viewed", :controller => "mypage", :action => "recently_viewed"
-          &nbsp;&nbsp;
-          - if logged_in?
-            = link_to icon_tag("door_out") + "logout", logout_path
-          - else
-            = link_to icon_tag("door_in") + "login", login_path
-        #description 〜環境設定やプログラミングなどの雑多な情報をデータベースで集中管理する実験〜
-
-      #globalNaviArea
-        = content_for_global_navi
-        #topic_path_list
-          -if topic_path_list
-            = topic_path_list
-          -else
-            &nbsp;
-
-      #contentMainWithSidebar
-        #sidebar{:class=>"sidebar"}
-          #search-indicator{:style=>"display: none"}
-            検索中...
-            = icon_tag("database_gear")
-            #search_results
-          = render :partial => "layouts/sidebar/user"
-          = render :partial => "layouts/sidebar/popular_tags"
-          = render :partial => "layouts/sidebar/most_viewed"
-          = render :partial => "layouts/sidebar/latest_articles"
-          = render :partial => "layouts/sidebar/search"
-          = render :partial => "layouts/sidebar/syndicate"
-
-      #contentMain
+    #body
+      #header
+        %h1= link_to APPLICATION_TITLE, root_url
+        %ul#usernavi
+          %li= link_to icon_tag("user") + "mypage", :controller => "mypage"
+          %li= link_to icon_tag("folder_explore") + "recently viewed", :controller => "mypage", :action => "recently_viewed"
+          %li= logged_in? ? link_to(icon_tag("door_out") + "logout", logout_path) : link_to(icon_tag("door_in") + "login", login_path)
+      #menu
+        = render :partial => "layouts/sidebar/user"
+        = render :partial => "layouts/sidebar/popular_tags"
+        = render :partial => "layouts/sidebar/most_viewed"
+        = render :partial => "layouts/sidebar/latest_articles"
+        = render :partial => "layouts/sidebar/search"
+        = render :partial => "layouts/sidebar/syndicate"
+      #content
         - if flash[:notice]
           #notice.flashNotice
             = flash[:notice]
