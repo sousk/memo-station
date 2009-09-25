@@ -83,6 +83,12 @@ class ArticlesController < ApplicationController
       end
     end
   end
+  def show_remote
+    show
+    render(:update){|page|
+      page.replace_html "article_#{@article.id}", render(:partial => "content")
+    }
+  end
   
   def edit
     @article = Article.find(params[:id])

@@ -56,7 +56,7 @@ module ApplicationHelper
         class_name = "nonActive"
       end
 
-      ary << link_to(icon_tag("world") + "ブックマーク", {:controller => "articles", :action => "bookmark"}, {:class => class_name})
+      # ary << link_to(icon_tag("world") + "ブックマーク", {:controller => "articles", :action => "bookmark"}, {:class => class_name})
     end
 
     content_tag("ul", ary.collect{|elem|content_tag("li", elem)}.join, :id => "globalNavi")

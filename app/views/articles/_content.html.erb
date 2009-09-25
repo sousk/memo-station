@@ -33,7 +33,7 @@
   <% end -%>
   <br />
 
-  Posted by <%= link_to h(@article.user.loginname), :controller => "user_info", :action => "profile", :loginname => @article.user.loginname %>
+  Posted by <%= link_to h(@article.user.login), :controller => "user_info", :action => "profile", :login => @article.user.login %>
   at <%= @article.created_at %>
   (<%= @article.access_count %> Views)
 </div>

@@ -1,7 +1,7 @@
-/ TODO, missing some feautures
 %li
   .article_header_subject
-    = link_to header.subject, "#todo"
+    / = link_to_remote header.subject, :url=>{:action=>'show'}, :update=>"article_#{header.id}"
+    = link_to_function header.subject, load_article(header, "article_#{header.id}")
     = new_icon header
   .article_header_tag
     - unless header.url.blank?
