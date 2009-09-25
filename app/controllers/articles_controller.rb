@@ -30,7 +30,7 @@ end
 class ArticlesController < ApplicationController
   DEFAULT_PER_PAGE = 30
   
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show]  
   
   extend ActionView::Helpers::SanitizeHelper::ClassMethods
   include ForRSS
@@ -95,6 +95,17 @@ class ArticlesController < ApplicationController
     render :action => "index"
   end
   
+  def search
+    @query = params[:query]
+    @queries = tags_string_to_tag_names(@query)
+    
+    @articles = @queries.empty? ?
+      Article.paginate(page_opts) :
+      Article.paged_find_tagged_with(@queries, page_opts)
+    
+    render :action => 'index'
+  end
+  
   def most_viewed
     case params[:period]
     when "today"
@@ -119,7 +130,18 @@ class ArticlesController < ApplicationController
   end
   
   private
+  def page_opts
+    {
+      :page => params['page'], 
+      :per_page => params[:limit] || DEFAULT_PER_PAGE, 
+      :order => 'url_access_at DESC'
+    }
+  end  
   def viewed_timestamps
     session[:article_viewed_timestamp] ||= {}
+  end
+  
+  def tags_string_to_tag_names(tags_string)
+    tags_string.to_s.split(TAG_SEPARATOR).find_all{|tag|!tag.empty?}
   end
 end

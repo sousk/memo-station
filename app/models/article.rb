@@ -34,6 +34,15 @@ class Article < ActiveRecord::Base
       article
     end
     
+    def paged_find_tagged_with(tags, args = {})
+      if tags.blank?
+        paginate args
+      else
+        opts = find_options_for_find_tagged_with(tags, :match_all => true).merge(args)
+        paginate opts
+      end
+    end
+    
     def most_viewed(before=1.years.ago, limit = 10, offset = 0)
       Article.find_by_sql(
         "select articles.*, count(article_view_logs.article_id) as article_id_count_all 

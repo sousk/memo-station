@@ -3,6 +3,8 @@
 
 APPLICATION_TITLE   = "bad-know-how shrine"
 URL_TRUNCATE_LENGTH = 64
+TAG_SEPARATOR       = %r/[　\s,;]+/
+
 
 class ApplicationController < ActionController::Base
   
