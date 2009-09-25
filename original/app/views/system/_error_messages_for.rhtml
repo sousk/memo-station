@@ -1,8 +1,0 @@
-<div class="errorExplanation" id="errorExplanation">
-<h2>エラーが発生しました。</h2>
-<!-- <p>次の項目に問題があります。</p> -->
-<ul>
- <%# 「○○ を入力してください」のようにスペースを入れられてしまうので場当たり的に対処する %>
- <% messages.each do |msg| %><li><%= msg.gsub(" ", "") %></li><% end %>
-</ul>
-</div>

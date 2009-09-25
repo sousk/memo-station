@@ -1,8 +1,0 @@
-<% unless @queries.empty? %>
-  <h2><%=h "「#{@queries.join(" ")}」の検索結果" %></h2>
-  <div class="bbsText">
-    <ul>
-      <%= render :partial => "article_header", :collection => @articles %>
-    </ul>
-  </div>
-<% end %>

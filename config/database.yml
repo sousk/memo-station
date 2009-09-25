@@ -14,7 +14,7 @@ development:
   <<: *my
   username: root
   password:
-  database: memost-dev
+  database: memost2-dev
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
 
@@ -23,12 +23,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: sqlite3
-  database: db/test.sqlite3
+  database: db/memost2-test.sqlite3
   pool: 5
   timeout: 5000
 
 production:
   adapter: sqlite3
-  database: db/production.sqlite3
+  database: db/memost2-prod.sqlite3
   pool: 5
   timeout: 5000
