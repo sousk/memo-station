@@ -10,11 +10,17 @@ memo-station originally developed by Akira Ikeda.
 v2
 --------
 
+*to be used more*
+
 * redesign data structure
 * change html layout with haml
 * switch to jQuery
 * change CSS with liquid layout
 * JSON feed
+
+tool
+* ticker script for pukiwiki
+* db migration script
 
 
 plan

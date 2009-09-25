@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :cards
+
   map.resources :articles, :collection => {
     :bookmark => :get,
     :most_viewed => :get,
