@@ -55,13 +55,28 @@ class User < ActiveRecord::Base
   def articles_count_average_per_day
     articles.count / alive_days
   end
-  # 登録してから何日たっているか？(小数)
+  
+  # how many day passed since user has been registered, in float
   def alive_days
     (Time.now - created_at) / 1.days
   end
+  
+  def paged_recent_viewed(page=1, options = {})
+    options = {
+      :page => page || 1,
+      :select => "articles.*, max(article_view_logs.created_at) as max_created_at", 
+      :conditions => recent_viewed_conditions, 
+      :group => "articles.id", :order => "max_created_at DESC"
+    }.merge(options)
+    viewed_articles.paginate(:all, options)
+  end
 
-  protected
-    
+  # def recent_viewed_count(options = {})
+  #   viewed_articles.count({:distinct => true, :select => "articles.id", :conditions => recent_viewed_conditions}.merge(options))
+  # end
 
-
+  private
+  def recent_viewed_conditions
+    ["article_view_logs.created_at >= ?", 24.hours.ago]
+  end
 end
