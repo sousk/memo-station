@@ -1,0 +1,9 @@
+#most_viewed
+  よく読まれているメモ
+  <ul>
+    <% Article.most_viewed(1.month.ago, num).each do |article| -%>
+ <li><%= link_to h(truncate(article.subject, 21)), :controller => "articles", :action => "show", :id => article %></li>
+ <% end -%>
+</ul>
+</div>
+</div>

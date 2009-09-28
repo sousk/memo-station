@@ -19,17 +19,15 @@
       #menu
         = render :partial => "layouts/sidebar/user"
         = render :partial => "layouts/sidebar/popular_tags"
-        = render :partial => "layouts/sidebar/most_viewed"
-        = render :partial => "layouts/sidebar/latest_articles"
-        = render :partial => "layouts/sidebar/search"
-        = render :partial => "layouts/sidebar/syndicate"
+        = render :partial => "layouts/sidebar/articles", :collection => Article.most_viewed_within(1.month.ago, 3)
+        / render :partial => "layouts/sidebar/latest_articles"
+        / render :partial => "layouts/sidebar/search"
+        / render :partial => "layouts/sidebar/syndicate"
       #content
-        - if flash[:notice]
-          #notice.flashNotice
-            = flash[:notice]
-        - if flash[:notice_duration]
-          TODO
+        #notice= flash[:notice]
+        #error= flash[:error]
+        #warn= flash[:warn]
         
-        = @content_for_layout
+        / = yield :layout
 
   = render :partial => "layouts/footer"

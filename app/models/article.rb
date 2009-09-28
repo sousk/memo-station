@@ -1,20 +1,30 @@
 class Article < ActiveRecord::Base
+  acts_as_taggable
+  
   belongs_to :user
   has_many :article_view_logs, :order => "created_at DESC"
   has_many :users, :through => :article_view_logs
 
   validates_presence_of :subject, :user_id, :my_tags
   validates_uniqueness_of :subject
-  acts_as_taggable  # :join_table => "tags_articles"
 
   validates_presence_of :subject, :user_id, :my_tags
   validates_uniqueness_of :subject
-  # validates_uniqueness_of :url
 
-  delegate :logger, :to => "self.class"
-  delegate :debug, :to => "self.class.logger"
-  
+  DEFAULT_PERIOD = 1.month.ago
+  DEFAULT_LIMIT = 10
+
   class << self
+    def most_viewed_within(period=DEFAULT_PERIOD, limit=DEFAULT_LIMIT)
+      Article.find :all,
+        :select => "a.*, count(l.article_id) as count",
+        :group => "l.article_id",
+        :joins => "as a left join article_view_logs as l on a.id = l.article_id",
+        :conditions => ["l.created_at >= ?", period],
+        :limit => limit,
+        :order => "count DESC"
+    end
+    
     def latest(limit=10)
       Article.find(:all, :order => "created_at DESC", :limit => limit)
     end

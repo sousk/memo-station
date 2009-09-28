@@ -1,24 +1,18 @@
-first:
-  id: 1
+article1:
   subject: subject1
   url: http://www.google.co.jp/
   body: body1
-  access_count: 100
-  access_date: 2006-01-01 00:00:00
-  created_at: 2006-01-01 00:00:00
-  updated_at: 2006-01-01 00:00:00
-  user_id: 1
-  modified_at: 2006-01-01 00:00:00
+  access_date: <%= Time.now.to_s :db %>
+  created_at: <%= 1.minute.ago.to_s :db %>
+  updated_at: <%= 1.minute.ago.to_s :db %>
+  user: quentin
 <% (2..30).each do |id| %>
-aricle<%= id %>:
-  id: <%= id %>
-  url: http://www.google.co.jp/
+article<%= id %>:
+  url: http://www.google.co.jp/<%= id %>
   subject: subject<%= id %>
   body: body<%= id %>
-  access_count: <%= id %>
-  access_date: 2006-01-01 00:00:00
-  created_at: <%= "2006-06-01".to_time - (id % 10).days %>
-  updated_at: 2006-01-01 00:00:00
-  user_id: <%= 1 + ((id * 3) % 10) %>
-  modified_at: 2006-01-01 00:00:00
+  access_date: <%= id.hours.ago %>
+  created_at: <%= id.days.ago %>
+  updated_at: <%= (id.days.ago + (rand(id) * rand(10)).hours) %>
+  user: <%= ['quentin', 'aaron', 'jane'][rand(3)] %>
 <% end %>

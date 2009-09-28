@@ -1,4 +1,4 @@
-class UserInfo < ActiveRecord::Migration
+class CreateUserInfo < ActiveRecord::Migration
   def self.up
     create_table "user_infos" do |t|
       t.column "user_id", :integer, :limit => 10, :default => 0, :null => false

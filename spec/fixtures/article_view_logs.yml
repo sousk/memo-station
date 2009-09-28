@@ -1,0 +1,7 @@
+<% 100.times do |n| %>
+log<%= n %>:
+  article: <%= 'article' + (rand(30) +1).to_s %>
+  user: <%= ['quentin', 'aaron', 'jane'][rand(3)] %>
+  created_at: <%= n.hours.ago %>
+  updated_at: <%= n.hours.ago %>
+<% end %>
