@@ -277,15 +277,15 @@ alert('追加しました。');
   # なのでOperaではdisable_withがあると無効にしてかわりにhideする。
   #
   # 荒殿さんからの報告
-  def my_submit_tag(*args)
-    options = args.pop
-    if opera?
-      if disable_with = options.delete(:disable_with)
-        options[:onclick] = "this.hide();new Insertion.After(this, '#{disable_with}');#{options[:onclick]}"
-      end
-    end
-    submit_tag(*(args + [options]))
-  end
+  # def my_submit_tag(*args)
+  #   options = args.pop
+  #   if opera?
+  #     if disable_with = options.delete(:disable_with)
+  #       options[:onclick] = "this.hide();new Insertion.After(this, '#{disable_with}');#{options[:onclick]}"
+  #     end
+  #   end
+  #   submit_tag(*(args + [options]))
+  # end
 
   # フルパスでURLを生成する
   # typoより

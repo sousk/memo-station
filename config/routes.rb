@@ -2,10 +2,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cards
 
   map.resources :articles, :collection => {
-    :bookmark => :get,
+    # :bookmark => :get,
     :most_viewed => :get,
-    :search => :get,
-    :feed => :get
+    :tagged => :get,
+    # :search => :get,
+    # :feed => :get
   }
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

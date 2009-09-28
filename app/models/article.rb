@@ -11,24 +11,12 @@ class Article < ActiveRecord::Base
   validates_presence_of :subject, :user_id, :my_tags
   validates_uniqueness_of :subject
 
+  default_scope :order => 'created_at DESC'
+  
   DEFAULT_PERIOD = 1.month.ago
   DEFAULT_LIMIT = 10
 
   class << self
-    def most_viewed_within(period=DEFAULT_PERIOD, limit=DEFAULT_LIMIT)
-      Article.find :all,
-        :select => "a.*, count(l.article_id) as count",
-        :group => "l.article_id",
-        :joins => "as a left join article_view_logs as l on a.id = l.article_id",
-        :conditions => ["l.created_at >= ?", period],
-        :limit => limit,
-        :order => "count DESC"
-    end
-    
-    def latest(limit=10)
-      Article.find(:all, :order => "created_at DESC", :limit => limit)
-    end
-    
     def get(id, visitor)
       article = Article.find(id)
       if article

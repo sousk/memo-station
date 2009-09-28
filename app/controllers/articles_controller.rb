@@ -91,14 +91,11 @@ class ArticlesController < ApplicationController
     render :action => "index"
   end
   
-  def search
-    @query = params[:query]
-    @queries = tags_string_to_tag_names(@query)
-    
+  def tagged
+    @tag = params[:tag]
     @articles = @queries.empty? ?
       Article.paginate(page_opts) :
-      Article.paged_find_tagged_with(@queries, page_opts)
-    
+      Article.paged_find_tagged_with(@tag.split(/[\s　]/), page_opts)
     render :action => 'index'
   end
   
