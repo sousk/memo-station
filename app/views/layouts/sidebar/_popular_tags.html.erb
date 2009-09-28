@@ -1,8 +1,0 @@
-<div class="roundedTitle"><span>人気タグ</span></div>
-<div class="roundedContent">
-<p class="tag_cloud clearfix">
-  <% tag_cloud(Article.tag_counts, (8..36).to_a) do |tag, cloud_size| -%>
-    <%= link_to h(tag.name), tag_item_url(:query => tag.name), {:style => "font-size: #{cloud_size}px;", :class => "popular_tag"} -%>
-  <% end -%>
-</p>
-</div>

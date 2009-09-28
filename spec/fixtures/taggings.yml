@@ -1,54 +1,65 @@
 jonathan_sky_good:
   tag: good
+  taggable: article1
   taggable_type: Article
   created_at: 2006-08-01
   
 jonathan_sky_nature:
   tag: nature
+  taggable: article1
   taggable_type: Article
   created_at: 2006-08-02
   
 jonathan_grass_nature:
   tag: nature
+  taggable: article2
   taggable_type: Article
   created_at: 2006-08-03
   
 jonathan_rain_question:
   tag: question
+  taggable: article3
   taggable_type: Article
   created_at: 2006-08-04
   
 jonathan_rain_nature:
   tag: nature
+  taggable: article3
   taggable_type: Article
   created_at: 2006-08-05
   
 jonathan_cloudy_nature:
   tag: nature
+  taggable: article4
   taggable_type: Article
   created_at: 2006-08-06
   
 jonathan_still_cloudy_nature:
   tag: nature
+  taggable: article5
   taggable_type: Article
   created_at: 2006-08-07
  
 sam_ground_nature:
   tag: nature
+  taggable: article6
   taggable_type: Article
   created_at: 2006-08-08
   
 sam_ground_bad:
   tag: bad
+  taggable: article6
   taggable_type: Article
   created_at: 2006-08-09
   
 sam_flowers_good:
   tag: good
+  taggable: article7
   taggable_type: Article
   created_at: 2006-08-10
   
 sam_flowers_nature:
   tag: nature
+  taggable: article7
   taggable_type: Article
   created_at: 2006-08-11

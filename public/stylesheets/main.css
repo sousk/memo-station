@@ -1,0 +1,107 @@
+body {
+  background: rgb(140,201,224) url(/images/body_background.png) repeat-x top left;
+}
+#wrapper {
+  margin-left: 7%;
+  margin-right: 7%;
+  background: #FFF;
+  width: 86%;
+}
+
+ul.inline {
+  list-style: none;
+}
+ul.inline li {
+  display: inline-block;
+  margin-right: 10px;
+}
+ul.inline img {
+  vertical-align: top;
+  margin-right: 3px;
+  border: none;
+}
+.inline a {
+  border: none;
+}
+.inline a:link, .inline a:visited, .inline a:hover, .inline a:active {
+  text-decoration: none;
+}
+
+
+/**
+ *   header
+ */
+
+#header {
+  height: 58px;
+  border-top:    3px solid rgb(9,63,127);
+  border-bottom: 3px solid rgb(140,201,224);
+  background-color: rgb(102,188,216);
+  padding: 0px 16px 0px 0px;
+}
+#header-top {
+/*  height: 80px;*/
+}
+#header-menu {
+  text-align: right;
+}
+#header a:link, #header a:visited, #header a:hover, #header a:active {
+  color: #FFF;
+  text-decoration: none;
+}
+#header h1 {
+  float: left;
+  padding: 12px 0px 0px 22px;
+  font-weight: bold;
+  font-size: 32px;
+}
+#usernavi {
+  text-align: right;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+
+/**
+ *   content
+ */
+#content-menu {
+  border-bottom: dotted 1px rgb(102, 188, 216);
+}
+#content-menu li {
+  margin-right: 28px;
+}
+#content-menu a:link, #content-menu a:visited, #content-menu a:hover, #content-menu a:active {
+  color: rgb(102, 188, 216);
+}
+
+
+/**
+ *   sidebar
+ */
+#left {
+  max-width: 220px;
+}
+#left #userwindow dt {
+  font-size: x-small;
+}
+#right {
+}
+
+.sidebar {
+  margin-top: 20px;
+  border: solid 1px rgb(140,201,224);
+}
+.sidebar a:link, .sidebar a:visited, .sidebar a:hover, .sidebar a:active {
+  color: rgb(102, 188, 216);
+  text-decoration: none;
+}
+.sidebar dt {
+  color: #FFF;
+  background: rgb(140,201,224);
+  font-weight: bold;
+  padding: 2px;
+}
+.sidebar dd {
+  padding: 6px;
+}

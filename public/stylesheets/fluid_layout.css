@@ -1,0 +1,78 @@
+* { /* sets 0 margin and 0 padding on everything */
+	margin: 0; 
+	padding: 0; 
+}
+
+body {
+	font-family: "Osaka", "メイリオ", Arial, Helvetica, sans-serif;
+/*  font-family: Arial, Helvetica, sans-serif;*/
+	font-size: small;
+}
+
+h2 {
+	padding: 5px 0 5px 0;
+	margin: 0 0 10px 0;
+}
+
+p { 
+	margin: 0 0 10px 0;
+}
+
+ul {
+	padding: 5px 0 5px 20px;
+}
+	
+li {
+	padding: 3px 0 3px 0;
+}
+	
+#wrapper, #content-wrapper {
+	float: left;
+	width: 100%;
+}
+
+#header {
+	height: 60px;
+	padding: 15px 0 5px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+
+#content {
+	margin: 0 15% 0 20%; /*Margins for content column. Should be “0 RightColumnWidth 0 LeftColumnWidth*/
+}
+
+#left {
+	float: left;
+	width: 20%; /*Width of left column in percentage*/
+	margin-left: -100%;
+}
+
+#left h2, #right h2 {
+	border-bottom: 1px dotted #CCC;
+}
+
+#right {
+	float: left;
+	width: 15%; /*Width of right column in pixels*/
+	margin-left: -15%; /*Set margin to that of -(RightColumnWidth)*/
+}
+
+#footer {
+	clear: left;
+	width: 100%;
+	background: black;
+	color: #FFF;
+	text-align: center;
+	padding: 4px 0;
+}
+
+#footer a {
+	color: #FFFF80;
+}
+
+.in {
+	margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+	margin-top: 0;
+}
+

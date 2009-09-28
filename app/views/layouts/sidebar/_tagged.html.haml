@@ -1,0 +1,4 @@
+#search
+  -form_tag :controller => "articles", :action => "tagged" do
+    = text_field_tag :tag, params[:tag]
+    = submit_tag "タグ絞込"
