@@ -1,5 +1,6 @@
-#most_viewed
-  %span よく読まれているメモ
-  %ul
-    - ArticleViewLog.most_viewed_within(period, limit).collect{|log| log.article}.each do |a|
-      %li= link_to h(truncate(a.subject, 21)), article_path(a)
+%dl.sidebar
+  %dt よく読まれているメモ
+  %dd
+    %ul
+      - ArticleViewLog.most_viewed_within(period, limit).collect{|log| log.article}.each do |a|
+        %li= link_to h(truncate(a.subject, 21)), article_path(a)

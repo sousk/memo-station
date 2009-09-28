@@ -1,6 +1,6 @@
-#most_viewed
-  %span 新しいメモ
-  %ul
-    - Article.find(:all, :limit => limit).each do |a|
-      %li= link_to h(truncate(a.subject, 21)), article_path(a)
-
+%dl.sidebar
+  %dt 新しいメモ
+  %dd
+    %ul
+      - Article.find(:all, :limit => limit).each do |a|
+        %li= link_to h(truncate(a.subject, 21)), article_path(a)
