@@ -14,21 +14,6 @@ class Article < ActiveRecord::Base
   DEFAULT_LIMIT = 10
 
   class << self
-    def get(id, visitor)
-      article = Article.find(id)
-      if article
-        article.update_attribute(:access_date, Time.now)
-        article.access_count ||= 0
-        article.access_count += 1
-      end
-      
-      if visitor
-        article.article_view_logs.create! :user => visitor
-      end
-      
-      article
-    end
-    
     def paged_find_tagged_with(tags, args = {})
       if tags.blank?
         paginate args

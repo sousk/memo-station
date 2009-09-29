@@ -34,16 +34,15 @@ module ArticlesHelper
     simple_format(str)
   end
   
-  
-  # def load_article(article, field)
-  #   "if (Element.empty('#{field}')) {" +
-  #     remote_function(:url => {:controller => "articles", :action => "show_remote", :id => article}) +t
-  #   "} else {
-  #     if (Element.visible('#{field}')) {
-  #       $('#{field}').hide();
-  #     } else {
-  #       $('#{field}').show();
-  #     }
-  #   }"
-  # end
+  def load_article(article, field)
+    "if (Element.empty('#{field}')) {" +
+      remote_function(:url => {:controller => "articles", :action => "show_remote", :id => article}) +t
+    "} else {
+      if (Element.visible('#{field}')) {
+        $('#{field}').hide();
+      } else {
+        $('#{field}').show();
+      }
+    }"
+  end
 end

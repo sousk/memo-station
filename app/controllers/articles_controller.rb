@@ -49,26 +49,15 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    if params[:id].blank?
-      # @article = Article.new :modified_at => Time.now
-      status = "posted"
-    else
-      status = "updated"
-      @article = Article.find(params[:id])
-    end
-    @before_article = @article.dup
-    @article.attributes = params[:article]
-    @article.user ||= current_user
-    Article.transaction {
-      unless @article.save
-        render :action => "edit"
-        return
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      if @article.update_attributes params[:article]
+        flash[:notice] = '更新しました'
+        format.html { redirect_to(article_path(@article)) }
+      else
+        format.html { render :action => "edit" }
       end
-    }
-    # Mailman.deliver_article_update(self, Time.now, :article => {:before => @before_article, :after => @article})
-    flash[:notice] = "#{status}"
-    flash[:notice_duration] = 0.8
-    redirect_to :action => "index"
+    end
   end
   
   def show
@@ -76,21 +65,8 @@ class ArticlesController < ApplicationController
     if current_user
       count = @article.article_view_logs.count :all, 
         :conditions => ['user_id = ? and created_at >= ?', current_user.id, 8.hours.ago]
-      if count
+      unless count
         @article.article_view_logs.create :user => current_user
-      end
-    end
-  end
-  
-  def _show
-    @article = Article.get params[:id], current_user
-    
-    last = viewed_timestamps[params[:id]]
-    if last.nil? || Time.now > 1.day.since(last)
-      viewed_timestamps[params[:id]] = Time.now
-      if logged_in? && (@article.user.id != current_user.id || ENV["RAILS_ENV"] == "development")
-        # article.user.user_info.karma += 1
-        # article.user.user_info.save!
       end
     end
   end
