@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    @article = Article.new(params[:article])
+    @article = current_user.articles.build params[:article]
     respond_to do |format|
       if @article.save
         flash[:notice] = '登録しました'
@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
   
   def update
     if params[:id].blank?
-      @article = Article.new :modified_at => Time.now
+      # @article = Article.new :modified_at => Time.now
       status = "posted"
     else
       status = "updated"

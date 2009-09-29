@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20090925092200) do
     t.integer  "access_count",  :default => 0
     t.datetime "access_date"
     t.datetime "url_access_at"
-    t.datetime "modified_at",                  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
