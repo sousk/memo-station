@@ -1,13 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
   # map.resources :cards
 
-  map.resources :articles, :collection => {
-    # :bookmark => :get,
-    :most_viewed => :get,
-    :tagged => :get,
-    # :search => :get,
-    # :feed => :get
-  }
+  map.resources :articles, 
+    :member => {
+      # :tagged => :get
+    },
+    :collection => {
+      # :bookmark => :get,
+      :most_viewed => :get,
+      # :tagged => :get,
+      # :search => :get,
+      # :feed => :get
+    }
+  map.connect "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged'
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

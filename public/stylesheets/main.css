@@ -1,7 +1,13 @@
 body {
   background: rgb(140,201,224) url(/images/body_background.png) repeat-x top left;
 }
+a:link, a:visited, a:hover, a:active {
+  color: rgb(102, 188, 216);
+  text-decoration: none;
+}
+
 #wrapper {
+  font-size: 90%;
   margin-left: 7%;
   margin-right: 7%;
   background: #FFF;
@@ -104,4 +110,27 @@ ul.inline img {
 }
 .sidebar dd {
   padding: 6px;
+}
+
+/**
+ *   article
+ */
+#page {
+  padding: 20px 10px 10px 10px;
+}
+#page h3 {
+  color: rgb(102, 188, 216);
+  font-size: x-large;
+  border-bottom: solid 1px rgb(102, 188, 216);
+}
+#page-content {
+  margin-top: 15px;
+  padding: 0px 20px;
+}
+#page-footer {
+  text-align: right;
+  color: #505050;
+}
+ul.tagging-list li {
+  margin-right: 4px;
 }

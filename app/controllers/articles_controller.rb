@@ -72,6 +72,17 @@ class ArticlesController < ApplicationController
   end
   
   def show
+    @article = Article.find params[:id]
+    if current_user
+      count = @article.article_view_logs.count :all, 
+        :conditions => ['user_id = ? and created_at >= ?', current_user.id, 8.hours.ago]
+      if count
+        @article.article_view_logs.create :user => current_user
+      end
+    end
+  end
+  
+  def _show
     @article = Article.get params[:id], current_user
     
     last = viewed_timestamps[params[:id]]

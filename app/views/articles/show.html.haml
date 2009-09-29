@@ -1,0 +1,25 @@
+#page
+  %h3= @article.subject
+
+  #page-content
+    = format_text @article.body
+
+  #page-footer
+    %ul.inline
+      %li= link_to icon_tag("pencil"), edit_article_path(@article)
+      %li= link_to icon_tag("bin"), article_path(@article), :method => 'delete', :confirm => "本当に削除しますか？"
+    %ul.tagging-list.inline
+      %li 
+        %strong タグ:
+      - for tag in @article.tag_list
+        %li= link_to h(tag), :controller => 'articles', :action => 'tagged', :tag => tag
+
+    %ul.inline
+      %li
+        posted by: 
+        = link_to h(@article.user.login), profile_url(:login => @article.user.login)
+        = 'at '+ @article.created_at.to_s(:short)
+      %li
+        (
+        = @article.article_view_logs.count
+        views)

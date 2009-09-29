@@ -51,14 +51,14 @@ module ApplicationHelper
   #
   # エスケープすると & が &amp; になりURLにふくまれる&が破壊されてしまう。
   # だから一端 & だけはもとに戻して auto_link に渡すようにした。
-  def article_simple_format(str)
-    str = h(str).gsub(/&amp;/, "&")
-    str = indent_by_escape(str)
-    str = auto_link(str){|url|
-      truncate(url, URL_TRUNCATE_LENGTH)
-    }
-    simple_format(str)
-  end
+  # def article_simple_format(str)
+  #   str = h(str).gsub(/&amp;/, "&")
+  #   str = indent_by_escape(str)
+  #   str = auto_link(str){|url|
+  #     truncate(url, URL_TRUNCATE_LENGTH)
+  #   }
+  #   simple_format(str)
+  # end
 
   # ブックマークレットの指定
   #

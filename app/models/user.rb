@@ -58,7 +58,8 @@ class User < ActiveRecord::Base
   
   # how many day passed since user has been registered, in float
   def alive_days
-    (Time.now - created_at) / 1.days
+    d = (Time.now - created_at).to_f / 1.day.to_f
+    d > 1 ? d : 1.0;
   end
   
   def paged_recent_viewed(page=1, options = {})
