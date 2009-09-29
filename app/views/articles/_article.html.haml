@@ -1,0 +1,11 @@
+- form_for article do |f|
+  %dl
+    %dt 題名
+    %dd= f.text_field "subject"
+    %dt 内容
+    %dd= f.text_area "body"
+    %dt タグ
+    %dd= f.text_field :tag_list
+
+  .submit
+    = submit_tag

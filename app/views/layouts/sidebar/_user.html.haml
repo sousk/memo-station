@@ -1,13 +1,13 @@
 %dl#userwindow.sidebar
   %dt
     - if logged_in?
-      =h current_user.login +'さん、こんにちは。'
+      =h(current_user.login)
     - else
       ゲストさん、ようこそ。
   %dd
     - if logged_in?
       メモ数
       = current_user.articles.count 
-      = '(平均' + ("%.2f" % current_user.articles_count_average_per_day) +' / day)'
+      = '<br />(平均' + ("%.2f" % current_user.articles_count_average_per_day) +' / day)'
     - else
       = link_to "メンバー登録する", :controller => "account", :action => "signup"

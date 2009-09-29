@@ -34,7 +34,18 @@ class ArticlesController < ApplicationController
     [:subject, :body, :url].each do |name|
       @article[name] = params[name].to_s.strip
     end
-    render :action => :edit
+  end
+  
+  def create
+    @article = Article.new(params[:article])
+    respond_to do |format|
+      if @article.save
+        flash[:notice] = '登録しました'
+        format.html { redirect_to(@article) }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
   
   def update
