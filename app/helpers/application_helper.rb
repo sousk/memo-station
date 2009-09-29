@@ -5,10 +5,6 @@ module ApplicationHelper
     image_tag("/silk_icons/#{name}.png", :class => "silk_icon icon_#{name}")
   end
 
-  def tag_item_url(options)
-    url_for(:controller => "articles", :action => "search", :tag => options[:tag])
-  end
-
   def my_form_elements_start
     "<dl>"
   end

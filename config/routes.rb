@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
       # :search => :get,
       # :feed => :get
     }
-  map.connect "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged'
+  map.tagged "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged'
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

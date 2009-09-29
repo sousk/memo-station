@@ -16,18 +16,18 @@ class ArticlesController < ApplicationController
     end
   end
   
-  def rss
-    redirect_to :action => 'feed'
-  end
-  
-  def feed
-    @articles = Article.paginate :page => params['page'], 
-      :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'updated_at DESC'
-      
-    respond_to do |f|
-      f.atom { render :action => 'index'}
-    end
-  end
+  # def rss
+  #   redirect_to :action => 'feed'
+  # end
+  # 
+  # def feed
+  #   @articles = Article.paginate :page => params['page'], 
+  #     :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'updated_at DESC'
+  #     
+  #   respond_to do |f|
+  #     f.atom { render :action => 'index'}
+  #   end
+  # end
   
   def new
     @article = Article.new
@@ -71,29 +71,29 @@ class ArticlesController < ApplicationController
     end
   end
   
-  def show_remote
-    show
-    render(:update){|page|
-      page.replace_html "article_#{@article.id}", render(:partial => "content")
-    }
-  end
+  # def show_remote
+  #   show
+  #   render(:update){|page|
+  #     page.replace_html "article_#{@article.id}", render(:partial => "content")
+  #   }
+  # end
   
   def edit
     @article = Article.find(params[:id])
   end
   
-  def bookmark
-    @articles = Article.paginate :page => params['page'], 
-      :conditions => "url is not null",
-      :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'url_access_at DESC'
-    render :action => "index"
-  end
+  # def bookmark
+  #   @articles = Article.paginate :page => params['page'], 
+  #     :conditions => "url is not null",
+  #     :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'url_access_at DESC'
+  #   render :action => "index"
+  # end
   
   def tagged
     @tag = params[:tag]
-    @articles = @queries.empty? ?
+    @articles = @tag.empty? ?
       Article.paginate(page_opts) :
-      Article.paged_find_tagged_with(@tag.split(/[\s　]/), page_opts)
+      Article.paged_find_tagged_with(@tag.split(/[\s　\+]+/), page_opts)
     render :action => 'index'
   end
   
