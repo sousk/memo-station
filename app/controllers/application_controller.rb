@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   include AuthenticatedSystem
+  before_filter :login_required
   
   def my_category
     self.class.global_navi_category || self.controller_name

@@ -6,7 +6,7 @@ article1:
   created_at: <%= 1.minute.ago.to_s :db %>
   updated_at: <%= 1.minute.ago.to_s :db %>
   user: quentin
-<% (2..30).each do |id| %>
+<% (2..80).each do |id| %>
 article<%= id %>:
   url: http://www.google.co.jp/<%= id %>
   subject: subject<%= id %>

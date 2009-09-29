@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  DEFAULT_PER_PAGE = 30
+  DEFAULT_PER_PAGE = 20
   
   before_filter :login_required, :except => [:index, :show, :feed, :rss]  
   
@@ -97,23 +97,8 @@ class ArticlesController < ApplicationController
     render :action => 'index'
   end
   
-  def most_viewed
-    case params[:period]
-    when "week"
-      @page_title = "in a week"
-      before_time = 1.week.ago
-    when "month"
-      @page_title = "in a month"
-      before_time = 1.month.ago
-    when "all"
-      @page_title = "in the whole"
-      before_time = 1.years.ago
-    else
-      @page_title = "today"
-      before_time = Time.now.beginning_of_day
-    end
-    
-    @articles = Article.most_viewed_with_paginate before_time, params[:page], DEFAULT_PER_PAGE
+  def viewed_at
+    @articles = Article.paged_most_viewed_at params[:at], current_user, params[:page] || 1
     render :action => 'index'
   end
   
@@ -121,8 +106,7 @@ class ArticlesController < ApplicationController
   def page_opts
     {
       :page => params['page'], 
-      :per_page => params[:limit] || DEFAULT_PER_PAGE, 
-      :order => 'url_access_at DESC'
+      :per_page => params[:limit] || DEFAULT_PER_PAGE
     }
   end  
   def viewed_timestamps

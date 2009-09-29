@@ -1,0 +1,8 @@
+%ul#list
+  - for article in list
+    %li
+      .list-subject
+        = link_to h(article.subject), article_path(article)
+        = new_icon article
+      .list-content
+        = truncate h(article.body), :length =>30

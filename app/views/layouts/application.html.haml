@@ -40,8 +40,8 @@
         .in
           = render :partial => "layouts/sidebar/user"
           = render :partial => "layouts/sidebar/popular_tags"
-          = render :partial => "layouts/sidebar/most_viewed", :locals => {:period => 1.month.ago, :limit => 3}
-          = render :partial => "layouts/sidebar/latest_articles", :locals => {:limit => 3}
+          = render :partial => "layouts/sidebar/most_viewed", :locals => {:period => 1.month.ago, :limit => 10}
+          = render :partial => "layouts/sidebar/latest_articles", :locals => {:limit => 10}
           = render :partial => "layouts/sidebar/syndicate"
 
       #right

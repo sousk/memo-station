@@ -13,17 +13,17 @@ ActionController::Routing::Routes.draw do |map|
       # :feed => :get
     }
   map.tagged "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged'
+  map.viewed_at "/articles/viewed_at/:at", :controller => 'articles', :action => 'viewed_at',
+    :at => /(this_year|this_month|this_week|today)/
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.profile "profile/:login", :controller => "user_info",  :action => "profile"
-  
+  map.profile "profile/:login", :controller => "users",  :action => "profile"
   
   map.resources :users
   map.resource :session
-  
 
   map.connect "rss",           :controller => "articles", :action => "rss"
   map.connect "signup",      :controller => "account",  :action => "signup"

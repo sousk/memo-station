@@ -23,6 +23,19 @@ class Article < ActiveRecord::Base
       end
     end
     
+    def paged_most_viewed_at(at, by, page=1, limit=DEFAULT_LIMIT)
+      from= Time.now.send("at_beginning_of_"+ at.gsub(/today/, "day").gsub(/this_/,''))
+      paginate :select => 'a.*, count(log.id) as count',
+        :page => page,
+        :limit => limit,
+        :joins => "as a left join article_view_logs as log on a.id = log.article_id",
+        :group => "a.id",
+        :conditions => ['log.user_id = ? and log.created_at >= ?', by.id, from],
+        :order => 'count DESC, a.created_at DESC'
+    end
+    
+    
+    
     # def most_viewed(before=1.years.ago, limit = 10, offset = 0)
     #   Article.find_by_sql(
     #     "select articles.*, count(article_view_logs.article_id) as article_id_count_all 

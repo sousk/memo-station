@@ -112,20 +112,42 @@ ul.inline img {
   padding: 6px;
 }
 
+.pagination {
+  width: 100%;
+  text-align: center;
+}
+.pagination span, .pagination a {
+  display: inline-block;
+  margin-right: 20px;
+}
+
 /**
  *   article
  */
 #page {
   padding: 20px 10px 10px 10px;
 }
-#page h3 {
+#page h2 {
   color: rgb(102, 188, 216);
   font-size: x-large;
   border-bottom: solid 1px rgb(102, 188, 216);
 }
+#page h3 {
+  margin: 15px 0px 10px 0px;
+  text-indent: 24px;
+  font-size: large;
+  color: rgb(9,63,127);
+  font-weight: bold;
+  border-bottom: 1px dotted rgb(102,188,216);
+  background: url(/images/b7.gif) no-repeat top left;
+}
 #page-content {
   margin-top: 15px;
   padding: 0px 20px;
+}
+#page .submenu {
+  text-align: right;
+  color: #505050;
 }
 #page-footer {
   text-align: right;

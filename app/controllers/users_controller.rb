@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  before_filter :login_required, :except => [:new, :profile]
   
 
   # render new.rhtml
@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   end
   
   def show
+  end
+  
+  def profile
+    @user = User.find_by_login params[:login]
   end
   
   def update

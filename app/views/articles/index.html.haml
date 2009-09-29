@@ -1,11 +1,18 @@
-.submenu
-  よく見たメモ
-  = link_to "今日", :controller => "articles", :action => "most_viewed", :period => "today"
-  = link_to "週", :controller => "articles", :action => "most_viewed", :period => "week"
-  = link_to "月", :controller => "articles", :action => "most_viewed", :period => "month"
-  = link_to "All", :controller => "articles", :action => "most_viewed", :period => "all"
+#page
+  %ul.submenu.inline
+    %li よく見たメモ
+    %li= link_to "今日", viewed_at_path(:at => "today")
+    %li= link_to "週", viewed_at_path(:at => "this_week")
+    %li= link_to "月", viewed_at_path(:at => "this_month")
+    %li= link_to "年", viewed_at_path(:at => "this_year")
 
-%h2= @topic_path_last
-.article_list
-  %ul
-    = render :partial => "articles/list", :object => @articles
+  %h2
+    一覧 (
+    = Article.count
+    件)
+  .article_list
+    = will_paginate(@article)
+    %ul
+      = render :partial => "articles/list", :object => @articles
+    = will_paginate(@article)
+

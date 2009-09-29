@@ -1,0 +1,9 @@
+#page
+  %h2
+    = @user.login
+    さんのプロフィール
+
+  %h3
+    今までに投稿したメモ一覧
+
+  = render :partial => "articles/list", :object => @user.articles
