@@ -29,14 +29,14 @@ module ArticlesHelper
     str = h(str).gsub(/&amp;/, "&")
     str = indent_by_escape(str)
     str = auto_link(str){|url|
-      truncate(url, URL_TRUNCATE_LENGTH)
+      truncate(url, :length => URL_TRUNCATE_LENGTH)
     }
     simple_format(str)
   end
   
   def load_article(article, field)
     "if (Element.empty('#{field}')) {" +
-      remote_function(:url => {:controller => "articles", :action => "show_remote", :id => article}) +t
+      remote_function(:url => {:controller => "articles", :action => "show_remote", :id => article}) +
     "} else {
       if (Element.visible('#{field}')) {
         $('#{field}').hide();

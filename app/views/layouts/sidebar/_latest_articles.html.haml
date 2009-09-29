@@ -3,4 +3,4 @@
   %dd
     %ul
       - Article.find(:all, :limit => limit).each do |a|
-        %li= link_to h(truncate(a.subject, 21)), article_path(a)
+        %li= link_to h(truncate(a.subject, :length => 21)), article_path(a)

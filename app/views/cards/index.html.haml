@@ -3,4 +3,4 @@
     %li
       .card
         .name= link_to(card.name, card)
-        .content= truncate card.content, 30
+        .content= truncate card.content, :length => 30

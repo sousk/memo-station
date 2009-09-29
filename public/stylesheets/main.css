@@ -134,3 +134,26 @@ ul.inline img {
 ul.tagging-list li {
   margin-right: 4px;
 }
+.list-subject a:link, .list-subject a:visited, .list-subject a:hover, .list-subject a:active {
+  color: rgb(13, 56, 150);
+  font-weight: bold;
+  font-size: large;
+}
+ul#list {
+  list-style: none;
+}
+
+
+.new1, .new2 {
+  font-size: 9px;
+  margin: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  font-weight: normal;
+}
+.new1 {
+  color: #ff6666; /* bright red 0度 */
+}
+.new2 {
+  color: #f0dcdc; /* pale red 0度 */
+}
