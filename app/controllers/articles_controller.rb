@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   DEFAULT_PER_PAGE = 20
   
-  before_filter :login_required, :except => [:index, :show, :feed, :rss]  
+  before_filter :login_required, :except => [:index, :show, :feed, :rss, :tagged]  
   
   # extend ActionView::Helpers::SanitizeHelper::ClassMethods
   # include ForRSS
