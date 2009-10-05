@@ -15,6 +15,7 @@ development:
   username: root
   password:
   database: memost2-dev
+  # socket: /var/lib/mysql/mysql.sock
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
 

@@ -17,7 +17,7 @@
           #header-top
             %h1= link_to APPLICATION_TITLE, root_url
             %ul#usernavi.inline
-              %li= link_to icon_tag("user") + "マイページ", :controller => "mypage"
+              %li= link_to_if logged_in?, icon_tag("user") + "マイページ", profile_path(:login=>current_user.login)
               %li= link_to icon_tag("folder_explore") + "最近見たメモ", :controller => "mypage", :action => "recently_viewed"
               %li= logged_in? ? link_to(icon_tag("door_out") + "ログアウト", logout_path) : link_to(icon_tag("door_in") + "ログイン", login_path)
           #header-menu.clear

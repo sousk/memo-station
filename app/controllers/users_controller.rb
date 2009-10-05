@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   
   def profile
     @user = User.find_by_login params[:login]
+    render_404 unless @user
   end
   
   def update
