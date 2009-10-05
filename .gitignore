@@ -13,3 +13,4 @@
 *.sqlite3
 *.sqlite
 *.db
+config/deploy.rb
