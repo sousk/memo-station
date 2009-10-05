@@ -5,7 +5,7 @@
     %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
     %title= APPLICATION_TITLE
     %link{:rel => "shortcut icon", :href => "/favicon.ico"}
-    = auto_discovery_link_tag :atom, :controller => "articles", :action => "feed", :title => APPLICATION_TITLE
+    = auto_discovery_link_tag :atom, :controller => "articles", :action => "feed"
     = stylesheet_link_tag 'fluid_layout', :media => 'screen'
     = stylesheet_link_tag 'main', :media => 'screen'
     = javascript_include_tag :defaults

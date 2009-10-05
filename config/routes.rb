@@ -3,14 +3,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :articles, 
     :member => {
-      # :tagged => :get
     },
     :collection => {
-      # :bookmark => :get,
       :most_viewed => :get,
-      # :tagged => :get,
-      # :search => :get,
-      # :feed => :get
+      :feed => :get
     }
   map.tagged "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged'
   map.viewed_at "/articles/viewed_at/:at", :controller => 'articles', :action => 'viewed_at',

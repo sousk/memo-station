@@ -20,14 +20,12 @@ class ArticlesController < ApplicationController
   #   redirect_to :action => 'feed'
   # end
   # 
-  # def feed
-  #   @articles = Article.paginate :page => params['page'], 
-  #     :per_page => params[:limit] || DEFAULT_PER_PAGE, :order => 'updated_at DESC'
-  #     
-  #   respond_to do |f|
-  #     f.atom { render :action => 'index'}
-  #   end
-  # end
+  def feed
+    @articles = Article.find :all, :limit=> params[:limit] || DEFAULT_PER_PAGE
+    respond_to do |f|
+      f.atom
+    end
+  end
   
   def new
     @article = Article.new
