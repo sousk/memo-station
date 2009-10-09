@@ -63,10 +63,6 @@ class ArticlesController < ApplicationController
     if logged_in?
       count = @article.article_view_logs.count :all, 
         :conditions => ['user_id = ? and created_at >= ?', current_user.id, 8.hours.ago]
-      logger.info "----------"
-      logger.info count
-      logger.info count ? "t":"f"
-      logger.info "----------"
       unless count > 0
         logger.info count
         @article.article_view_logs.create! :user => current_user
