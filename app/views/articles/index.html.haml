@@ -11,8 +11,8 @@
     = Article.count
     件)
   .article_list
-    = will_paginate(@article)
+    = will_paginate(@articles)
     %ul
       = render :partial => "articles/list", :object => @articles
-    = will_paginate(@article)
+    = will_paginate(@articles)
 
