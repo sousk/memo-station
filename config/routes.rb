@@ -8,7 +8,8 @@ ActionController::Routing::Routes.draw do |map|
       :most_viewed => :get,
       :feed => :get
     }
-  map.tagged "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged'
+  map.tagged "/articles/tagged/:tag", :controller => 'articles', :action => 'tagged',
+    :requirements => { :tag => /.+/ }
   map.viewed_at "/articles/viewed_at/:at", :controller => 'articles', :action => 'viewed_at',
     :at => /(this_year|this_month|this_week|today)/
 

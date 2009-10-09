@@ -60,6 +60,9 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find params[:id]
+    
+    return render_404 unless @article
+    
     if logged_in?
       count = @article.article_view_logs.count :all, 
         :conditions => ['user_id = ? and created_at >= ?', current_user.id, 8.hours.ago]
